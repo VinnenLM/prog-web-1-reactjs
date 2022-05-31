@@ -1,0 +1,109 @@
+body, html {
+    background-color: #2d294c;
+    color: white;
+}
+
+.header {
+    background-color: #413d5d;
+    vertical-align: middle;
+    padding: 15px;
+}
+
+.header__menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+}
+
+.logo > span{
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.logo > img {
+    width: 25px;
+}
+
+.opcoes > a{
+    line-height: 2rem;
+    color: white;
+}
+.minhas-colecoes {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.container-principal {
+    margin: 0 auto;
+    width: 60%;
+}
+
+.botao{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.botao>.btn {
+    background-color: #5e5796 !important;
+    color: white;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 35px;
+}
+
+.cartoes{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 25%);
+    width: 100%;
+}
+
+.cartao {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    height: 260px;
+    font-weight: bold;
+    width: 80%;
+    text-align: center;
+    margin: 10px 10px;
+}
+
+.editar-cartao{
+    color: blue;
+    text-align: right;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.cartao-nome {
+    margin-top: 20px;
+    font-size: 20px;
+    color: rgb(71, 209, 209);
+}
+
+.cartao-imagem>img{
+    margin-top: 10px;
+    width: 130px;
+    height: 140px;
+}
+
+.excluir-cartao{
+    color: red;
+    text-align: right;
+    margin-right: 10px;
+    margin-top: -5px;
+}
+
+#myModal{
+    color: black;
+}
+
+.modal-footer > button{
+    width: 85px;
+    text-align: center;
+}
