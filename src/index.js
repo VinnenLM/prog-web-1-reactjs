@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from '../src/view/cadastro';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -8,3 +8,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+//react-router-dom -> utilizado para permitir rotas entre páginas
