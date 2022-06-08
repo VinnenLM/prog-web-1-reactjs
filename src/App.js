@@ -10,10 +10,12 @@ import EditarColecao from './view/editar-colecao';
 import Index from './view/index';
 import NovaColecao from './view/nova-colecao';
 import NovoCartao from './view/novo-cartao';
+import NavBar from './components/navbar';
 
 function App() {
   return (
     <BrowserRouter>
+      <NavBar />
       <Routes>
         <Route exact path='/' element={<Login />} />
         <Route exact path='/login' element={<Login />} />
