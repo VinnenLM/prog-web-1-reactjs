@@ -1,12 +1,13 @@
 import React from "react";
-import EstiloCartao from './cartao.css';
+import { Link } from "react-router-dom";
+import EstiloCartao from './cartao.module.css';
 
 function Cartao() {
     return (
         <div>
             <div className={EstiloCartao.containerPrincipal}>
                 <span>Coleção - Objetos</span>
-                <div className="input-group input-busca">
+                <div className={`${EstiloCartao.inputBusca} input-group`}>
                     <div className="input-group-prepend">
                         <button className="btn btn-default"><i className="bi bi-search"></i></button>
                     </div>
@@ -14,94 +15,96 @@ function Cartao() {
                 </div>
             </div>
 
-            <div className="novo-cartao">
-                <a href="novo-cartao.html" className="btn">Novo Cartão</a>
+            <div className={EstiloCartao.novoCartao}>
+                <Link to="/novo-cartao" className={EstiloCartao.btn}>Novo Cartão</Link>
             </div>
 
-            <main className="container-principal">
-                <div className="listagem">
-                    <ul className="list-group" data-idCartao="1">
-                        <li className="list-group-item">
-                            <div className="nome-colecao">
-                                <a href="">Árvore</a>
+            <main className={EstiloCartao.containerPrincipal}>
+                <div>
+                    <ul className="list-group" data-idcartao="1">
+                        <li className={`${EstiloCartao.listGroupItem} list-group-item`}>
+                            <div className={EstiloCartao.nomeColecao}>
+                                <Link to="/novo-cartao">Árvore</Link>
                             </div>
-                            <div className="botao">
+                            <div className={EstiloCartao.botao}>
                                 <button className="btn btn-primary"><i className="bi bi-pencil-square"></i></button>
                                 <button className="btn btn-danger mostarModal"><i className="bi bi-trash-fill"></i></button>
                             </div>
                         </li>
                     </ul>
-                    <ul className="list-group" data-idCartao="2">
-                        <li className="list-group-item">
-                            <div className="nome-colecao">
-                                <a href="">Janela</a>
+                    <ul className="list-group" data-idcartao="2">
+                        <li className={`${EstiloCartao.listGroupItem} list-group-item`}>
+                            <div className={EstiloCartao.nomeColecao}>
+                                <Link to="/novo-cartao">Janela</Link>
                             </div>
-                            <div className="botao">
+                            <div className={EstiloCartao.botao}>
                                 <button className="btn btn-primary"><i className="bi bi-pencil-square"></i></button>
                                 <button className="btn btn-danger mostarModal"><i className="bi bi-trash-fill"></i></button>
                             </div>
                         </li>
                     </ul>
-                    <ul className="list-group" data-idCartao="3">
-                        <li className="list-group-item">
-                            <div className="nome-colecao">
-                                <a href="">Cobertor</a>
+                    <ul className="list-group" data-idcartao="3">
+                        <li className={`${EstiloCartao.listGroupItem} list-group-item`}>
+                            <div className={EstiloCartao.nomeColecao}>
+                                <Link to="/novo-cartao">Cobertor</Link>
                             </div>
-                            <div className="botao">
+                            <div className={EstiloCartao.botao}>
                                 <button className="btn btn-primary"><i className="bi bi-pencil-square"></i></button>
                                 <button className="btn btn-danger mostarModal"><i className="bi bi-trash-fill"></i></button>
                             </div>
                         </li>
                     </ul>
-                    <ul className="list-group" data-idCartao="4">
-                        <li className="list-group-item">
-                            <div className="nome-colecao">
-                                <a href="">Telefone</a>
+                    <ul className="list-group" data-idcartao="4">
+                        <li className={`${EstiloCartao.listGroupItem} list-group-item`}>
+                            <div className={EstiloCartao.nomeColecao}>
+                                <Link to="/novo-cartao">Telefone</Link>
                             </div>
-                            <div className="botao">
+                            <div className={EstiloCartao.botao}>
                                 <button className="btn btn-primary"><i className="bi bi-pencil-square"></i></button>
                                 <button className="btn btn-danger mostarModal"><i className="bi bi-trash-fill"></i></button>
                             </div>
                         </li>
                     </ul>
-                    <ul className="list-group" data-idCartao="5">
-                        <li className="list-group-item">
-                            <div className="nome-colecao">
-                                <a href="">Brinquedo</a>
+                    <ul className="list-group" data-idcartao="5">
+                        <li className={`${EstiloCartao.listGroupItem} list-group-item`}>
+                            <div className={EstiloCartao.nomeColecao}>
+                                <Link to="/novo-cartao">Brinquedo</Link>
                             </div>
-                            <div className="botao">
+                            <div className={EstiloCartao.botao}>
                                 <button className="btn btn-primary"><i className="bi bi-pencil-square"></i></button>
                                 <button className="btn btn-danger mostarModal"><i className="bi bi-trash-fill"></i></button>
                             </div>
                         </li>
                     </ul>
-                    <ul className="list-group" data-idCartao="6">
-                        <li className="list-group-item">
-                            <div className="nome-colecao">
-                                <a href="">Teclado</a>
+                    <ul className="list-group" data-idcartao="6">
+                        <li className={`${EstiloCartao.listGroupItem} list-group-item`}>
+                            <div className={EstiloCartao.nomeColecao}>
+                                <Link to="/novo-cartao">Teclado</Link>
                             </div>
-                            <div className="botao">
+                            <div className={EstiloCartao.botao}>
                                 <button className="btn btn-primary"><i className="bi bi-pencil-square"></i></button>
                                 <button className="btn btn-danger mostarModal"><i className="bi bi-trash-fill"></i></button>
                             </div>
                         </li>
                     </ul>
-                    <ul className="list-group" data-idCartao="7">
-                        <li className="list-group-item">
-                            <div className="nome-colecao">
-                                <a href="">Papel</a>
+                    <ul className="list-group" data-idcartao="7">
+                        <li className={`${EstiloCartao.listGroupItem} list-group-item`}>
+                            <div className={EstiloCartao.nomeColecao}>
+                                <Link to="/novo-cartao">Papel</Link>
                             </div>
-                            <div className="botao">
+                            <div className={EstiloCartao.botao}>
                                 <button className="btn btn-primary"><i className="bi bi-pencil-square"></i></button>
                                 <button className="btn btn-danger mostarModal"><i className="bi bi-trash-fill"></i></button>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <button className="btn btn-success d-flex" id="salvar">Jogar!</button>
+                <div className="d-flex">
+                    <button className={`${EstiloCartao.btn} btn btn-success`} id={EstiloCartao.salvar}>Jogar!</button>
+                </div>
             </main>
 
-            <div className="modal fade" id="myModal" tabindex="-1" role="dialog">
+            <div className="modal fade" id="myModal" tabIndex="-1" role="dialog">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">

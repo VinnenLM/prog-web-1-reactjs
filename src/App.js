@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './view/login';
 import Cadastro from './view/cadastro';
 import Home from './view/home';
-// import Cartao from './view/cartao';
+import Cartao from './view/cartao';
 // import EditarCartao from './view/editar-cartao';
 // import EditarColecao from './view/editar-colecao';
 // import Index from './view/index';
@@ -18,7 +18,7 @@ function App() {
         <Route exact path='/' element={<Login />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/cadastro' element={<Cadastro />} />
-        {/* <Route exact path='/cartao' element={<Cartao />} />
+        {/* 
         
         <Route exact path='/editar-cartao' element={<EditarCartao />} />
         <Route exact path='/editar-colecao' element={<EditarColecao />} />
@@ -27,6 +27,7 @@ function App() {
          <Route exact path='/nova-colecao' element={<NovaColecao />} />
          <Route exact path='/novo-cartao' element={<NovoCartao />} />
          <Route exact path='/home' element={<Home />} />
+         <Route exact path='/cartao' element={<Cartao />} />
       </Routes>
     </BrowserRouter>
   );

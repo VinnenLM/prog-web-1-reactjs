@@ -38,7 +38,7 @@ function Login() {
                             {tipo==='ok' && <span>Entrou</span>}
                             {tipo==='erro' && <span>Não entrou</span>}
                             <div className={EstiloLogin.botao}>
-                                <button id="entrar" className="btn mt-3" type="button" onClick={autenticar}>Entrar</button>
+                                <button id="entrar" className={`${EstiloLogin.btn} btn mt-3`} type="button" onClick={autenticar}>Entrar</button>
                             </div>
                         </form>
                     </div>

@@ -68,7 +68,7 @@ label {
 }
 
 
-button {
+.btn {
     background-color: #5e5796 !important;
     width: 35%;
     color: white;
