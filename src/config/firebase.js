@@ -1,4 +1,5 @@
-import * as firebase from "firebase/app";
+import { initializeApp } from "firebase/app";
+import { initializeFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyC5FxwXY3utSw9hl8bAoE0i3pzu3vCsql8",
@@ -10,4 +11,8 @@ const firebaseConfig = {
   measurementId: "G-3K2GRVX0ZR"
 };
 
-export default firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const firestore = initializeFirestore(app, { experimentalForceLongPolling: true })
+
+export default firestore
+

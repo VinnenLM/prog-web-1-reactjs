@@ -1,84 +1,84 @@
 import React from "react";
-import './home.css';
+import { Link } from "react-router-dom";
+
+import EstiloHome from './home.module.css';
 import Bola from '../../assets/img/bola.png';
 import Cores from '../../assets/img/rainbow-circle.png';
 import Urso from '../../assets/img/urso.png';
 import Arvore from '../../assets/img/arvore.png';
 
 function Home() {
-    return(
-        
-        <main>
+    return (
 
-        <div class="container-principal botao">
-            <a href="nova-colecao.html" class="btn btn-default">Nova Coleção</a>
-        </div>
+        <>
+            <div className={`${EstiloHome.containerPrincipal} ${EstiloHome.botao}`}>
+                <Link to="/nova-colecao" className={`${EstiloHome.btn} btn-default`}>Nova Coleção</Link>
+            </div>
 
-        <div class="container-principal">
+            <div className={EstiloHome.containerPrincipal}>
 
-            <div class="cartoes">
+                <div className={EstiloHome.cartoes}>
 
-                <div class="cartao" data-idCartao="1">
-                    <div class="editar-cartao"><i class="bi bi-pencil"></i></div>
-                    <div class="cartao-imagem"><img src={Bola} alt="" /></div>
-                    <div class="cartao-nome">
-                        <span>Objetos</span>
+                    <div className={EstiloHome.cartao} data-idcartao="1">
+                        <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
+                        <div className={EstiloHome.cartaoImagem}><img src={Bola} alt="" /></div>
+                        <div className={EstiloHome.cartaoNome}>
+                            <span>Objetos</span>
+                        </div>
+                        <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
                     </div>
-                    <div class="excluir-cartao"><i class="bi bi-trash3"></i></div>
-                </div>
 
-                <div class="cartao" data-idCartao="2">
-                    <div class="editar-cartao"><i class="bi bi-pencil"></i></div>
-                    <div class="cartao-imagem"><img src={Cores} alt="" /></div>
-                    <div class="cartao-nome">
-                        <span class="teste">Cores</span>
+                    <div className={EstiloHome.cartao} data-idcartao="2">
+                        <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
+                        <div className={EstiloHome.cartaoImagem}><img src={Cores} alt="" /></div>
+                        <div className={EstiloHome.cartaoNome}>
+                            <span>Cores</span>
+                        </div>
+                        <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
                     </div>
-                    <div class="excluir-cartao"><i class="bi bi-trash3"></i></div>
-                </div>
 
-                <div class="cartao" data-idCartao="3">
-                    <div class="editar-cartao"><i class="bi bi-pencil"></i></div>
-                    <div class="cartao-imagem"><img src={Urso} alt="" /></div>
-                    <div class="cartao-nome">
-                        <span>Animais</span>
+                    <div className={EstiloHome.cartao} data-idcartao="3">
+                        <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
+                        <div className={EstiloHome.cartaoImagem}><img src={Urso} alt="" /></div>
+                        <div className={EstiloHome.cartaoNome}>
+                            <span>Animais</span>
+                        </div>
+                        <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
                     </div>
-                    <div class="excluir-cartao"><i class="bi bi-trash3"></i></div>
-                </div>
-                <div class="cartao" data-idCartao="4">
-                    <div class="editar-cartao"><i class="bi bi-pencil"></i></div>
-                    <div class="cartao-imagem"><img src={Arvore} alt="" /></div>
-                    <div class="cartao-nome">
-                        <span>Adjetivos</span>
+                    <div className={EstiloHome.cartao} data-idcartao="4">
+                        <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
+                        <div className={EstiloHome.cartaoImagem}><img src={Arvore} alt="" /></div>
+                        <div className={EstiloHome.cartaoNome}>
+                            <span>Adjetivos</span>
+                        </div>
+                        <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
                     </div>
-                    <div class="excluir-cartao"><i class="bi bi-trash3"></i></div>
+
                 </div>
 
             </div>
 
-        </div>
-
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Exclusão</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Tem certeza que deseja remover essa coleção? Isso excluirá todos os cartões contidos nela.
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="excluir">Sim</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            <div className="modal fade" id="myModal" tabIndex="-1" role="dialog">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">Exclusão</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <p>Tem certeza que deseja remover essa coleção? Isso excluirá todos os cartões contidos nela.
+                            </p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-primary" id="excluir">Sim</button>
+                            <button type="button" className="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-    </main>
+        </>
 
     )
 }

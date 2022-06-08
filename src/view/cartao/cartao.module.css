@@ -31,33 +31,33 @@ body, html {
     width: 25px;
 }
 
-.minhas-colecoes {
+.minhasColecoes {
     margin-right: 20px;
 }
 
-.container-principal {
+.containerPrincipal {
     margin-top: 2rem;
     margin-left: 30px;
     margin-right: 30px;
 }
 
-.container-principal>span {
+.containerPrincipal > span {
     font-weight: bold;
     font-size: 25px;
     margin-bottom: 5px;
 }
 
-.input-busca{
+.inputBusca{
     margin-top: 5px;
 }
 
-.novo-cartao{
+.novoCartao{
     margin-top: 2rem;
     margin-left: 30px;
     margin-right: 30px;
 }
 
-.novo-cartao>.btn{
+.novoCartao>.btn{
     background-color: #5e5796 !important;
     padding: 10px 20px;
     color: white;
@@ -75,7 +75,7 @@ input {
     border: 1px solid grey;
 }
 
-.nome-colecao>a {
+.nomeColecao>a {
     color: black;
     font-size: 18px;
     font-weight: bold;

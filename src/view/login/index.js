@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './login.css';
+import EstiloLogin from './login.module.css';
 
 import "../../config/firebase";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
@@ -23,21 +23,21 @@ function Login() {
 
     return (
         <main>
-            <div className="container-principal">
-                <div className="titulo">
+            <div className={EstiloLogin.containerPrincipal}>
+                <div className={EstiloLogin.titulo}>
                     <h1>Login</h1>
                 </div>
                 <div className="input-group">
-                    <div className="container-principal">
+                    <div className={EstiloLogin.containerPrincipal}>
                         <form action="/cadastro" method="post">
                             <label htmlFor="email">Email</label>
                             <input onChange={(evt) => setEmail(evt.target.value)} className="form-control" type="email" id="email" placeholder="Insira o seu e-mail" />
-                            <span id="emailInvalido" className="naoMostrar">E-mail inválido</span>
+                            <span id="emailInvalido" className={EstiloLogin.naoMostrar}>E-mail inválido</span>
                             <label htmlFor="senha">Senha</label>
                             <input onChange={(evt) => setSenha(evt.target.value)} className="form-control" type="password" id="senha" />
                             {tipo==='ok' && <span>Entrou</span>}
                             {tipo==='erro' && <span>Não entrou</span>}
-                            <div className="botao">
+                            <div className={EstiloLogin.botao}>
                                 <button id="entrar" className="btn mt-3" type="button" onClick={autenticar}>Entrar</button>
                             </div>
                         </form>

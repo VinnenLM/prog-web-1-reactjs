@@ -1,10 +1,10 @@
 import React from "react";
-import './cartao.css';
+import EstiloCartao from './cartao.css';
 
 function Cartao() {
     return (
         <div>
-            <div className="container-principal">
+            <div className={EstiloCartao.containerPrincipal}>
                 <span>Coleção - Objetos</span>
                 <div className="input-group input-busca">
                     <div className="input-group-prepend">

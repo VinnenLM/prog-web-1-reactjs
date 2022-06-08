@@ -1,32 +1,34 @@
 import React from "react";
-import './novo-cartao.css'
+import EstiloNovoCartao from './novo-cartao.module.css'
 
-function Login() {
-    return(
+function NovoCartao() {
+    return (
         <main>
-        <div class="container-principal">
-            <span>Coleção - Objetos</span>
+            <div className={EstiloNovoCartao.containerPrincipal}>
+                <span>Coleção - Objetos</span>
 
-            <div class="titulo">
-                <h3>Preencha os dados da frente e do verso do flashcard</h3>
-            </div>
-
-            <div class="cartao">
-                <span>Frente</span>
-                <div class="cartao-frente">
-                    <input value="Nome"></input>
+                <div className={EstiloNovoCartao.titulo}>
+                    <h3>Preencha os dados da frente e do verso do flashcard</h3>
                 </div>
-                <div class="separacao"></div>
-                <span>Verso</span>
-                <div class="cartao-verso">
-                    <input value="Nome"></input>
+
+                <div className={EstiloNovoCartao.cartao}>
+                    <span>Frente</span>
+                    <div className={EstiloNovoCartao.cartaoFrente}>
+                        <input value="Nome"></input>
+                    </div>
+                    <div className={EstiloNovoCartao.separacao}></div>
+                    <span>Verso</span>
+                    <div className={EstiloNovoCartao.cartaoVerso}>
+                        <input value="Nome"></input>
+                    </div>
+                </div>
+
+                <div className="d-flex">
+                    <button className={`${EstiloNovoCartao.btn}`} id={EstiloNovoCartao.salvar}>Cadastrar</button>
                 </div>
             </div>
-
-            <button class="btn btn-default d-flex" id="salvar">Cadastrar</button>
-        </div>
-    </main>
+        </main>
     )
 }
 
-export default Login;
+export default NovoCartao;

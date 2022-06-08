@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './cadastro.css';
+import EstiloCadastro from './cadastro.module.css';
 
 import "../../config/firebase";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
@@ -39,13 +39,13 @@ function Cadastro() {
 
     return (
         <main>
-            <div className="container-principal">
-                <div className="titulo">
+            <div className={EstiloCadastro.containerPrincipal}>
+                <div className={EstiloCadastro.titulo}>
                     <h1>Cadastre-se</h1>
                     <p>Com a sua conta, você poderá gerenciar suas coleções de flash cards.</p>
                 </div>
                 <div className="input-group">
-                    <div className="container-principal">
+                    <div className={EstiloCadastro.containerPrincipal}>
                         <form method="post">
                             <label htmlFor="nome">Nome</label>
                             <input type="text" className="form-control" id="nome" placeholder="Insira o seu nome completo" />
@@ -58,7 +58,7 @@ function Cadastro() {
                             <span id="senhaErrada" className="naoMostrar">Senha não confere</span>
                             {tipo === 'ok' && <span>Deu bom</span>}
                             {tipo === 'erro' && <span>{msg}</span>}
-                            <div className="botao">
+                            <div className={EstiloCadastro.botao}>
                                 <button id="cadastrar" className="btn mt-3" type="button" onClick={cadastrar}>Cadastrar</button>
                             </div>
                         </form>

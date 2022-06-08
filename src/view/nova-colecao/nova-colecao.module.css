@@ -39,13 +39,13 @@ body, html {
     margin: 3rem 0 0 35px;
 }
 
-.container-principal{
+.containerPrincipal{
     margin-top: 2rem;
     margin-left: 30px;
     margin-right: 30px;
 }
 
-.container-principal > span{
+.containerPrincipal > span{
     font-weight: bold;
     font-size: 25px;
 }
@@ -61,7 +61,7 @@ h3 {
     font-weight: 400;
 }
 
-.container-input{
+.containerInput{
     margin: 0 auto !important;
     width: 30%;
 }

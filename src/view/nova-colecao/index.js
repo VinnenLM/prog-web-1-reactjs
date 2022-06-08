@@ -1,21 +1,21 @@
 import React from "react";
-import './nova-colecao.css';
+import EstiloNovaColecao from './nova-colecao.module.css';
 
-function Login() {
+function NovaColecao() {
     return(
         <main>
 
-        <div class="container-principal">
+        <div class={EstiloNovaColecao.containerPrincipal}>
 
             <span>Nova Coleção</span>
 
-            <div class="titulo">
+            <div class={EstiloNovaColecao.titulo}>
                 <h3>Preencha os dados referente à coleção a ser criada</h3>
             </div>
 
             <div class="input-group">
 
-                <div class="container-input">
+                <div class={EstiloNovaColecao.containerInput}>
 
                     <form action="home.html" method="POST">
                         <label for="nome">Nome coleção</label>
@@ -30,8 +30,8 @@ function Login() {
                               <label class="custom-file-label" for="imagem">Escolha uma imagem para a coleção criada...</label>
                         </div>
 
-                        <div class="botao">
-                            <button type="submit" class="btn mt-3" id="salvar" onclick="salvarDados()">Cadastrar</button>
+                        <div class={EstiloNovaColecao.botao}>
+                            <button type="submit" class="btn mt-3" id={EstiloNovaColecao.salvar} onclick="salvarDados()">Cadastrar</button>
                         </div>
 
                     </form>
@@ -44,4 +44,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default NovaColecao;

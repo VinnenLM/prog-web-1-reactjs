@@ -30,12 +30,12 @@ body, html {
     line-height: 2rem;
     color: white;
 }
-.minhas-colecoes {
+.minhasColecoes {
     margin-right: 20px;
     font-weight: bold;
 }
 
-.container-principal {
+.containerPrincipal {
     margin: 0 auto;
     width: 60%;
 }
@@ -50,6 +50,7 @@ body, html {
 .botao>.btn {
     background-color: #5e5796 !important;
     color: white;
+    border-radius: 5px;
     padding: 10px 20px;
     font-size: 12px;
     font-weight: 600;
@@ -73,26 +74,26 @@ body, html {
     margin: 10px 10px;
 }
 
-.editar-cartao{
+.editarCartao{
     color: blue;
     text-align: right;
     margin-top: 5px;
     margin-right: 10px;
 }
 
-.cartao-nome {
+.cartaoNome {
     margin-top: 20px;
     font-size: 20px;
     color: rgb(71, 209, 209);
 }
 
-.cartao-imagem>img{
+.cartaoImagem>img{
     margin-top: 10px;
     width: 130px;
     height: 140px;
 }
 
-.excluir-cartao{
+.excluirCartao{
     color: red;
     text-align: right;
     margin-right: 10px;
