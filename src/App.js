@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 
 import Login from './view/login';
 import Cadastro from './view/cadastro';
@@ -14,21 +16,23 @@ import NavBar from './components/navbar';
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route exact path='/' element={<Login />} />
-        <Route exact path='/login' element={<Login />} />
-        <Route exact path='/cadastro' element={<Cadastro />} />
-        <Route exact path='/editar-cartao' element={<EditarCartao />} />
-        <Route exact path='/nova-colecao' element={<NovaColecao />} />
-        <Route exact path='/novo-cartao' element={<NovoCartao />} />
-        <Route exact path='/home' element={<Home />} />
-        <Route exact path='/cartao' element={<Cartao />} />
-        <Route exact path='/index' element={<Index />} />
-        <Route exact path='/editar-colecao' element={<EditarColecao />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route exact path='/' element={<Login />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/cadastro' element={<Cadastro />} />
+          <Route exact path='/editar-cartao' element={<EditarCartao />} />
+          <Route exact path='/nova-colecao' element={<NovaColecao />} />
+          <Route exact path='/novo-cartao' element={<NovoCartao />} />
+          <Route exact path='/home' element={<Home />} />
+          <Route exact path='/cartao' element={<Cartao />} />
+          <Route exact path='/index' element={<Index />} />
+          <Route exact path='/editar-colecao' element={<EditarColecao />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

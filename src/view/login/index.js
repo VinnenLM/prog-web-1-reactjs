@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import EstiloLogin from './login.module.css';
 
+import { useSelector, useDispatch } from "react-redux";
+import { Navigate } from 'react-router-dom';
+
 import "../../config/firebase";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 function Login() {
+
+    const dispatch = useDispatch();
 
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
@@ -13,16 +18,20 @@ function Login() {
     function autenticar() {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, senha)
-        .then((userCredential) => {
-            setTipo('ok');
-          })
-          .catch((error) => {
-            setTipo('erro')
-          });
+            .then((userCredential) => {
+                setTipo('ok');
+                dispatch({ type: 'LOGIN', usuarioEmail: email })
+            })
+            .catch((error) => {
+                setTipo('erro')
+            });
     }
 
     return (
         <main>
+
+            {useSelector(state => state.usuarioLogado) > 0 ? <Navigate to='/home' replace /> : null}
+
             <div className={EstiloLogin.containerPrincipal}>
                 <div className={EstiloLogin.titulo}>
                     <h1>Login</h1>
@@ -35,8 +44,8 @@ function Login() {
                             <span id="emailInvalido" className={EstiloLogin.naoMostrar}>E-mail inválido</span>
                             <label htmlFor="senha">Senha</label>
                             <input onChange={(evt) => setSenha(evt.target.value)} className="form-control" type="password" id="senha" />
-                            {tipo==='ok' && <span>Entrou</span>}
-                            {tipo==='erro' && <span>Não entrou</span>}
+                            {tipo === 'ok' && <span>Entrou</span>}
+                            {tipo === 'erro' && <span>Não entrou</span>}
                             <div className={EstiloLogin.botao}>
                                 <button id="entrar" className={`${EstiloLogin.btn} btn mt-3`} type="button" onClick={autenticar}>Entrar</button>
                             </div>
