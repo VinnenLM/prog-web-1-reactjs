@@ -36,7 +36,7 @@ body, html {
     margin-left: 20px;
 }
 
-.container-principal {
+.containerPrincipal {
     margin-top: 2rem;
     margin-left: 30px;
     margin-right: 30px;
@@ -58,12 +58,12 @@ h3 {
     font-weight: 400;
 }
 
-.container-cartoes{
+.containerCartoes{
     width: 50%;
     margin: 0 auto;
 }
 
-.cartao-p{
+.cartaoP{
     margin-top: 5rem;
     margin-left: 2rem;
     font-size: 20px;
@@ -93,7 +93,7 @@ h3 {
     align-self: flex-end;
 }
 
-.div-cartao{
+.divCartao{
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -112,7 +112,7 @@ h3 {
     padding: 5px 0;
 }
 
-.cartao-frente, .cartao-verso {
+.cartaoFrente, .cartaoVerso {
     font-size: 25px;
     text-align: center;
     height: 50%;
@@ -131,13 +131,13 @@ h3 {
     height: 30%;
 }
 
-.cartao-seta{
+.cartaoSeta{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.nao-visivel{
+.naoVisivel{
     opacity: 0;
     pointer-events: none;
 }
