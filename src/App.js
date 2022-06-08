@@ -8,7 +8,7 @@ import Home from './view/home';
 // import EditarCartao from './view/editar-cartao';
 // import EditarColecao from './view/editar-colecao';
 // import Index from './view/index';
-// import NovaColecao from './view/nova-colecao';
+import NovaColecao from './view/nova-colecao';
 import NovoCartao from './view/novo-cartao';
 
 function App() {
@@ -23,8 +23,8 @@ function App() {
         <Route exact path='/editar-cartao' element={<EditarCartao />} />
         <Route exact path='/editar-colecao' element={<EditarColecao />} />
         <Route exact path='/index' element={<Index />} />
-        <Route exact path='/nova-colecao' element={<NovaColecao />} />
          */}
+         <Route exact path='/nova-colecao' element={<NovaColecao />} />
          <Route exact path='/novo-cartao' element={<NovoCartao />} />
          <Route exact path='/home' element={<Home />} />
       </Routes>

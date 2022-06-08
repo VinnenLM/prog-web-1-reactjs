@@ -26,12 +26,12 @@ function NovaColecao() {
                         <label for="imagem">Imagem</label>
 
                         <div class="input-group">
-                              <input type="file" id="imagem" onchange="mudarNome(this)"/>
-                              <label class="custom-file-label" for="imagem">Escolha uma imagem para a coleção criada...</label>
+                              <input hidden type="file" id="imagem" onchange="mudarNome(this)"/>
+                              <label class="custom-file-label" for="imagem">Escolha uma imagem para a coleção...</label>
                         </div>
 
                         <div class={EstiloNovaColecao.botao}>
-                            <button type="submit" class="btn mt-3" id={EstiloNovaColecao.salvar} onclick="salvarDados()">Cadastrar</button>
+                            <button type="submit" class="btn mt-5" id={EstiloNovaColecao.salvar} onclick="salvarDados()">Cadastrar</button>
                         </div>
 
                     </form>
