@@ -1,35 +1,37 @@
 import React from "react";
-import './editar-cartao.css';
+import EstiloEditarCartao from './editar-cartao.module.css';
 
 function EditarCartao() {
-    return(
+    return (
         <main>
-        <div class="container-principal">
-            <span>Coleção - Objetos</span>
+            <div class={EstiloEditarCartao.containerPrincipal}>
+                <span>Coleção - Objetos</span>
 
-            <div class="titulo">
-                <h3>Atualize os dados da frente e do verso do flashcard</h3>
-            </div>
-
-            <form action="cartoes.html" method="post">
-
-            <div class="cartao">
-                <span>Frente</span>
-                <div class="cartao-frente">
-                    <input id="frente" value="Nome"></input>
+                <div class={EstiloEditarCartao.titulo}>
+                    <h3>Atualize os dados da frente e do verso do flashcard</h3>
                 </div>
-                <div class="separacao"></div>
-                <span>Verso</span>
-                <div class="cartao-verso">
-                    <input id="verso" value="Nome"></input>
-                </div>
+
+                <form action="cartoes.html" method="post">
+
+                    <div class={EstiloEditarCartao.cartao}>
+                        <span>Frente</span>
+                        <div class={EstiloEditarCartao.cartaoFrente}>
+                            <input id="frente" value="Nome"></input>
+                        </div>
+                        <div class={EstiloEditarCartao.separacao}></div>
+                        <span>Verso</span>
+                        <div class={EstiloEditarCartao.cartaoVerso}>
+                            <input id="verso" value="Nome"></input>
+                        </div>
+                    </div>
+
+                    <div className="d-flex justify-content-center">
+                        <button className={`${EstiloEditarCartao.btn} btn btn-default`} id={EstiloEditarCartao.salvar} onclick="salvarDados()">Salvar alterações</button>
+                    </div>
+
+                </form>
             </div>
-
-            <button class="btn btn-default d-flex" id="salvar" onclick="salvarDados()">Salvar alterações</button>
-
-            </form>
-        </div>
-    </main>
+        </main>
     )
 }
 
