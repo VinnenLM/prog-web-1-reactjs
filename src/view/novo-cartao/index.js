@@ -14,12 +14,12 @@ function NovoCartao() {
                 <div className={EstiloNovoCartao.cartao}>
                     <span>Frente</span>
                     <div className={EstiloNovoCartao.cartaoFrente}>
-                        <input value="Nome"></input>
+                        <input className={EstiloNovoCartao.inputNomes} value="Nome"></input>
                     </div>
                     <div className={EstiloNovoCartao.separacao}></div>
                     <span>Verso</span>
                     <div className={EstiloNovoCartao.cartaoVerso}>
-                        <input value="Nome"></input>
+                        <input className={EstiloNovoCartao.inputNomes} value="Nome"></input>
                     </div>
                 </div>
 

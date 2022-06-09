@@ -6,42 +6,42 @@ import Seta from '../../assets/img/seta.png';
 function Login() {
     return(
         <main>
-        <div class={EstiloIndex.containerPrincipal}>
+        <div className={EstiloIndex.containerPrincipal}>
 
-            <div class={EstiloIndex.titulo}>
-                <h1>Mind Booster</h1>
-                <h3>Treine a sua memória com Flash Cards!</h3>
+            <div>
+                <h1 className={EstiloIndex.titulo}>Mind Booster</h1>
+                <h3 className={EstiloIndex.subTitulo}>Treine a sua memória com Flash Cards!</h3>
             </div>
 
-            <div class={EstiloIndex.containerCartoes}>
+            <div className={EstiloIndex.containerCartoes}>
 
-                <p class={EstiloIndex.cartaoP}>Como se chama carro em inglês?</p>
+                <p className={EstiloIndex.cartaoP}>Como se chama carro em inglês?</p>
                 
-                <div class={EstiloIndex.cartoes}>
+                <div className={EstiloIndex.cartoes}>
                    
-                    <div id="cartao-clicavel" class={EstiloIndex.divCartao}>
-                        <div class={EstiloIndex.clicar}>
+                    <div id="cartao-clicavel" className={EstiloIndex.divCartao}>
+                        <div className={EstiloIndex.clicar}>
                             <span>Clique no cartão <br/> para descobrir</span>
                             <img src={SetaClicar} alt=""/>
                         </div>
-                        <div class={EstiloIndex.cartao}>
-                            <div class={EstiloIndex.cartaoFrente}>
+                        <div className={EstiloIndex.cartao}>
+                            <div className={EstiloIndex.cartaoFrente}>
                                 <span>Carro</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class={`${EstiloIndex.cartaoSeta} ${EstiloIndex.naoVisivel}`}>
-                        <img class={EstiloIndex.seta} src={Seta} alt=""/>
+                    <div className={`${EstiloIndex.cartaoSeta} ${EstiloIndex.naoVisivel}`}>
+                        <img className={EstiloIndex.seta} src={Seta} alt=""/>
                     </div>
 
-                    <div id="cartao-completo" class={`${EstiloIndex.divCartao} ${EstiloIndex.naoVisivel}`}>
-                        <div class={EstiloIndex.cartao}>
-                            <div class={EstiloIndex.cartaoFrente}>
+                    <div id="cartao-completo" className={`${EstiloIndex.divCartao} ${EstiloIndex.naoVisivel}`}>
+                        <div className={EstiloIndex.cartao}>
+                            <div className={EstiloIndex.cartaoFrente}>
                                 <span>Carro</span>
                             </div>
-                            <div class={EstiloIndex.separacao}></div>
-                            <div class={EstiloIndex.cartaoVerso}>
+                            <div className={EstiloIndex.separacao}></div>
+                            <div className={EstiloIndex.cartaoVerso}>
                                 <span>Car</span>
                             </div>
                         </div>

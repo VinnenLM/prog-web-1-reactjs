@@ -90,7 +90,7 @@ h3 {
     color: grey;
 }
 
-input{
+.inputNomes{
     width: 100%;
     text-align: center;
     font-weight: bold;
@@ -101,7 +101,7 @@ input{
 .btn {
     background-color: #5e5796 !important;
     border-color: #5e5796;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px 20px;
     color: white;
     border-style: unset;

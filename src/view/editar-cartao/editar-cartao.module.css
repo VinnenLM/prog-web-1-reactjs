@@ -15,7 +15,7 @@ body, html {
     margin: 0 20px;
 }
 
-input{
+.inputNomes{
     width: 100%;
     text-align: center;
     font-weight: bold;

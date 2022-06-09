@@ -3,7 +3,6 @@ import Logo from '../../assets/img/logo.png';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 function NavBar() {
     const dispatch = useDispatch();
     return (
@@ -18,13 +17,13 @@ function NavBar() {
                     {
                         useSelector(state => state.usuarioLogado) <= 0 ?
                             <>
-                                <Link to="/cadastro">Cadastre-se</Link>
+                                <Link to="/cadastro" className={`${EstiloNavBar.cadastro} cadastro`}>Cadastre-se</Link>
                                 <Link to="/login" className={EstiloNavBar.entrar}>Entrar</Link>
                             </>
                             :
                             <>
-                                <Link to="/home">Minhas Coleções</Link>
-                                <Link to="/login" onClick={() => { dispatch({ type: 'LOGOUT' }) }} className={EstiloNavBar.entrar}>Sair</Link>
+                                <Link to="/home" className={EstiloNavBar.minhasColecoes}>Minhas Coleções</Link>
+                                <Link to="/login" onClick={() => { dispatch({ type: 'LOGOUT' }) }} className={EstiloNavBar.sair}>Sair</Link>
                             </>
                     }
                 </div>

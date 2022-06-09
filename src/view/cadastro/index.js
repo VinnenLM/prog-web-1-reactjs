@@ -48,14 +48,14 @@ function Cadastro() {
                     <div className={EstiloCadastro.containerPrincipal}>
                         <form method="post">
                             <label htmlFor="nome">Nome</label>
-                            <input type="text" className="form-control" id="nome" placeholder="Insira o seu nome completo" />
+                            <input type="text" className={`${EstiloCadastro.inputsCadastro} form-control`} id="nome" placeholder="Insira o seu nome completo" />
                             <label htmlFor="email">Email</label>
-                            <input onChange={(evt) => setEmail(evt.target.value)} type="text" className="form-control" id="email" placeholder="Insira o seu e-mail" />
+                            <input onChange={(evt) => setEmail(evt.target.value)} type="text" className={`${EstiloCadastro.inputsCadastro} form-control`} id="email" placeholder="Insira o seu e-mail" />
                             <label htmlFor="senha">Senha</label>
-                            <input onChange={(evt) => setSenha(evt.target.value)} type="password" className="form-control" id="senha" />
+                            <input onChange={(evt) => setSenha(evt.target.value)} type="password" className={`${EstiloCadastro.inputsCadastro} form-control`} id="senha" />
                             <label htmlFor="repetirSenha">Repetir a senha</label>
-                            <input type="password" className="form-control" id="repetirSenha" />
-                            <span id="senhaErrada" className="naoMostrar">Senha não confere</span>
+                            <input type="password" className={`${EstiloCadastro.inputsCadastro} form-control`} id="repetirSenha" />
+                            <span id="senhaErrada" className={EstiloCadastro.naoMostrar}>Senha não confere</span>
                             {tipo === 'ok' && <span>Deu bom</span>}
                             {tipo === 'erro' && <span>{msg}</span>}
                             <div className={EstiloCadastro.botao}>

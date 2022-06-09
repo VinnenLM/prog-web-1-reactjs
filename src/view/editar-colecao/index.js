@@ -25,7 +25,7 @@ function EditarColecao() {
 
                     <div className="input-group">
                         <input hidden type="file" id="imagem" onchange="mudarNome(this)" />
-                        <label className="custom-file-label" for="imagem">Escolha uma imagem para a coleção criada...</label>
+                        <label className="custom-file-label" for="imagem">Escolha uma imagem para a coleção...</label>
                     </div>
 
                     <div className={EstiloEditarColecao.botao}>

@@ -16,12 +16,12 @@ function EditarCartao() {
                     <div class={EstiloEditarCartao.cartao}>
                         <span>Frente</span>
                         <div class={EstiloEditarCartao.cartaoFrente}>
-                            <input id="frente" value="Nome"></input>
+                            <input className={EstiloEditarCartao.inputNomes} id="frente" value="Nome"></input>
                         </div>
                         <div class={EstiloEditarCartao.separacao}></div>
                         <span>Verso</span>
                         <div class={EstiloEditarCartao.cartaoVerso}>
-                            <input id="verso" value="Nome"></input>
+                            <input className={EstiloEditarCartao.inputNomes} id="verso" value="Nome"></input>
                         </div>
                     </div>
 

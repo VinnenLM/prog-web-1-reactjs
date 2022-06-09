@@ -3,34 +3,6 @@ body, html {
     color: white;
 }
 
-.header {
-    background-color: #413d5d;
-    vertical-align: middle;
-    padding: 15px;
-}
-
-.header__menu {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 20px;
-}
-
-.header__menu > a {
-    color: white;
-    line-height: 2rem;
-}
-
-.logo > span{
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: 5px;
-    vertical-align: middle;
-}
-
-.logo > img {
-    width: 25px;
-}
-
 .containerPrincipal {
     width: 55%;
     margin: 0 auto;
@@ -41,7 +13,7 @@ body, html {
     margin-top: 5rem;
 }
 
-h1 {
+.titulo > h1 {
     color: #736ab3;
     font-weight: bold;
 }
@@ -51,12 +23,17 @@ label {
     margin-bottom: 0;
 }
 
-#senhaErrada{
+.inputsCadastro{
+    width: 100%;
+    border: none;
+}
+
+#senhaErrada {
     color: red;
     font-size: 12px;
 }
 
-.naoMostrar{
+.naoMostrar {
     display: none;
 }
 
@@ -64,4 +41,10 @@ label {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+}
+
+.botao>button {
+    background-color: #5e5796 !important;
+    width: 25%;
+    color: white;
 }
