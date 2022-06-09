@@ -1,11 +1,13 @@
 import EstiloNavBar from './navbar.module.css';
 import Logo from '../../assets/img/logo.png';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function NavBar() {
+    const dispatch = useDispatch();
     return (
+
         <header className={EstiloNavBar.header}>
             <div className={EstiloNavBar.header__menu}>
                 <div className={EstiloNavBar.logo}>
@@ -13,14 +15,21 @@ function NavBar() {
                     <span>QI Labs</span>
                 </div>
                 <div className={EstiloNavBar.opcoes}>
-
-                    {useSelector(state => state.usuarioLogado) > 0 ? null : null}
-
-                    <Link to="/cadastro">Cadastre-se</Link>
-                    <Link to="/login" className={EstiloNavBar.entrar}>Entrar</Link>
+                    {
+                        useSelector(state => state.usuarioLogado) <= 0 ?
+                            <>
+                                <Link to="/cadastro">Cadastre-se</Link>
+                                <Link to="/login" className={EstiloNavBar.entrar}>Entrar</Link>
+                            </>
+                            :
+                            <>
+                                <Link to="/home">Minhas Coleções</Link>
+                                <Link to="/login" onClick={() => { dispatch({ type: 'LOGOUT' }) }} className={EstiloNavBar.entrar}>Sair</Link>
+                            </>
+                    }
                 </div>
             </div>
-        </header>
+        </header >
     );
 }
 
