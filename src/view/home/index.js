@@ -37,15 +37,16 @@ function Home() {
                 <div className={EstiloHome.cartoes}>
                     {
                         minhaColecao.map((colecao) =>
-                            <>
-                                <div className={EstiloHome.cartao} data-idcartao="1">
+                            <div key={colecao.id}>
+                                <div id={colecao.id} className={EstiloHome.cartao}>
                                     <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
                                     <div className={EstiloHome.cartaoImagem}><img src={colecao.imagem} alt="" /></div>
                                     <div className={EstiloHome.cartaoNome}>
                                         <span>{colecao.nome}</span>
                                     </div>
                                     <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
-                                </div></>
+                                </div>
+                            </div>
                         )
                     }
                 </div>

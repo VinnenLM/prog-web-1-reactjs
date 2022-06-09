@@ -10,7 +10,7 @@ function NavBar() {
         <header className={EstiloNavBar.header}>
             <div className={EstiloNavBar.header__menu}>
                 <div className={EstiloNavBar.logo}>
-                    <img src={Logo} alt="Logo QI Labs" />
+                    <Link><img src={Logo} alt="Logo QI Labs" /></Link>
                     <span>QI Labs</span>
                 </div>
                 <div className={EstiloNavBar.opcoes}>
