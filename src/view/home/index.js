@@ -1,13 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import firestore from '../../config/firebase';
+import { collection, onSnapshot, query } from 'firebase/firestore'
 
 import EstiloHome from './home.module.css';
-import Bola from '../../assets/img/bola.png';
-import Cores from '../../assets/img/rainbow-circle.png';
-import Urso from '../../assets/img/urso.png';
-import Arvore from '../../assets/img/arvore.png';
+
 
 function Home() {
+
+    const [minhaColecao, setMinhaColecao] = useState([]);
+
+    useEffect(() => {
+
+        const colecoes = []
+
+        const q = query(collection(firestore, "flashcards"));
+
+        onSnapshot(q, (result) => {
+            result.forEach((doc) => {
+                const myDoc = {
+                    ...doc.data(),
+                    id: doc.id
+                }
+                colecoes.push(myDoc)
+            });
+
+            setMinhaColecao(colecoes)
+        });
+
+    }, []);
+
+
+    const ListaColecoes = () => {
+        if (minhaColecao.length > 0) {
+            return (
+                <div className={EstiloHome.cartoes}>
+                    {
+                        minhaColecao.map((colecao) =>
+                            <>
+                                <div className={EstiloHome.cartao} data-idcartao="1">
+                                    <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
+                                    <div className={EstiloHome.cartaoImagem}><img src={colecao.imagem} alt="" /></div>
+                                    <div className={EstiloHome.cartaoNome}>
+                                        <span>{colecao.nome}</span>
+                                    </div>
+                                    <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
+                                </div></>
+                        )
+                    }
+                </div>
+            );
+        }
+
+        return (
+            <div>
+                <p>Lista vazia!</p>
+            </div>
+        )
+    }
+
     return (
 
         <>
@@ -17,44 +68,7 @@ function Home() {
 
             <div className={EstiloHome.containerPrincipal}>
 
-                <div className={EstiloHome.cartoes}>
-
-                    <div className={EstiloHome.cartao} data-idcartao="1">
-                        <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
-                        <div className={EstiloHome.cartaoImagem}><img src={Bola} alt="" /></div>
-                        <div className={EstiloHome.cartaoNome}>
-                            <span>Objetos</span>
-                        </div>
-                        <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
-                    </div>
-
-                    <div className={EstiloHome.cartao} data-idcartao="2">
-                        <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
-                        <div className={EstiloHome.cartaoImagem}><img src={Cores} alt="" /></div>
-                        <div className={EstiloHome.cartaoNome}>
-                            <span>Cores</span>
-                        </div>
-                        <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
-                    </div>
-
-                    <div className={EstiloHome.cartao} data-idcartao="3">
-                        <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
-                        <div className={EstiloHome.cartaoImagem}><img src={Urso} alt="" /></div>
-                        <div className={EstiloHome.cartaoNome}>
-                            <span>Animais</span>
-                        </div>
-                        <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
-                    </div>
-                    <div className={EstiloHome.cartao} data-idcartao="4">
-                        <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
-                        <div className={EstiloHome.cartaoImagem}><img src={Arvore} alt="" /></div>
-                        <div className={EstiloHome.cartaoNome}>
-                            <span>Adjetivos</span>
-                        </div>
-                        <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
-                    </div>
-
-                </div>
+                <ListaColecoes />
 
             </div>
 
