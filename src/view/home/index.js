@@ -31,7 +31,8 @@ function Home() {
     }, []);
 
     const excluirColecao = (id) => {
-        deleteDoc(doc(firestore, "flashcards", id))
+        deleteDoc(doc(firestore, "flashcards", id));
+        window.location.reload(false);
       }
 
     const ListaColecoes = () => {
