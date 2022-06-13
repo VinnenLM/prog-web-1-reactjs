@@ -6,16 +6,18 @@ import { Navigate } from "react-router-dom";
 
 function NovaColecao() {
 
-    const [nome, setNome] = useState('')
-    const [descricao, setDescricao] = useState('')
-    const [imagem, setImagem] = useState('')
+    const [nome, setNome] = useState('');
+    const [descricao, setDescricao] = useState('');
+    const [imagemNome, setImagemNome] = useState('');
+    const [imagem, setImagem] = useState([]);
+    const [estado, setEstado] = useState('');
 
     function adicionar(evt) {
         evt.preventDefault();
         const documento = {
             nome: nome,
             descricao: descricao,
-            imagem: imagem
+            imagem: imagem,
         }
 
         const colecao = collection(firestore, "flashcards");
@@ -25,12 +27,31 @@ function NovaColecao() {
         setNome('');
         setDescricao('');
         setImagem('');
+        setImagemNome('');
 
-        <Navigate to='/home' replace />
+        setEstado('salvo');
+    }
+
+    function inserirImagem(evt) {
+
+        var reader = new FileReader();
+        reader.readAsDataURL(evt.target.files[0]);
+
+        reader.onload = () => {
+            setImagem(reader.result);
+        };
+
+        reader.onerror = error => {
+            console.log(error);
+        };
+
+        setImagemNome(evt.target.value);
     }
 
     return (
         <main>
+
+            {estado === 'salvo' ? <Navigate to='/home' replace /> : null}
 
             <div className={EstiloNovaColecao.containerPrincipal}>
 
@@ -52,8 +73,8 @@ function NovaColecao() {
                         <label htmlFor="imagem">Imagem</label>
 
                         <div className="input-group">
-                            <input hidden type="file" id="imagem" value={imagem} onChange={(evt) => setImagem(evt.target.value)} />
-                            <label className="custom-file-label" htmlFor="imagem">{imagem === '' ? 'Escolha uma imagem para a coleção...' : imagem}</label>
+                            <input hidden accept="image/*" id="imagem" type="file" onChange={inserirImagem} />
+                            <label className="custom-file-label" htmlFor="imagem">{imagemNome === '' ? 'Escolha uma imagem para a coleção...' : imagemNome}</label>
                         </div>
 
                         <div className={EstiloNovaColecao.botao}>
