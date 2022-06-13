@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import firestore from '../../config/firebase';
-import { collection, onSnapshot, query } from 'firebase/firestore'
+import { collection, deleteDoc, doc, onSnapshot, query } from 'firebase/firestore'
 
 import EstiloHome from './home.module.css';
 
@@ -30,6 +30,9 @@ function Home() {
 
     }, []);
 
+    const excluirColecao = (id) => {
+        deleteDoc(doc(firestore, "flashcards", id))
+      }
 
     const ListaColecoes = () => {
         if (minhaColecao.length > 0) {
@@ -44,7 +47,7 @@ function Home() {
                                     <div className={EstiloHome.cartaoNome}>
                                         <span>{colecao.nome}</span>
                                     </div>
-                                    <div className={EstiloHome.excluirCartao}><i className="bi bi-trash3"></i></div>
+                                    <div className={EstiloHome.excluirCartao}><i onClick={() => excluirColecao(colecao.id)} className="bi bi-trash3"></i></div>
                                 </div>
                             </div>
                         )
