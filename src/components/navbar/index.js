@@ -10,7 +10,13 @@ function NavBar() {
         <header className={EstiloNavBar.header}>
             <div className={EstiloNavBar.header__menu}>
                 <div className={EstiloNavBar.logo}>
-                    <Link><img src={Logo} alt="Logo QI Labs" /></Link>
+                    {
+                        useSelector(state => state.usuarioLogado) <= 0 ?
+                            <img src={Logo} className={EstiloNavBar.imgLogo} alt="Logo QI Labs" />
+
+                            :
+                            <Link to="/home"><img src={Logo} className={EstiloNavBar.imgLogo} alt="Logo QI Labs" /></Link>
+                    }
                     <span>QI Labs</span>
                 </div>
                 <div className={EstiloNavBar.opcoes}>

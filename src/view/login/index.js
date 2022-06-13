@@ -27,6 +27,12 @@ function Login() {
             });
     }
 
+    function autenticarEnter(evt) {
+        if(evt.key === 'Enter'){
+            autenticar();
+        }
+    }
+
     return (
         <main>
 
@@ -40,10 +46,10 @@ function Login() {
                     <div className={EstiloLogin.containerPrincipal}>
                         <form action="/cadastro" method="post">
                             <label htmlFor="email">Email</label>
-                            <input onChange={(evt) => setEmail(evt.target.value)} className="form-control" type="email" id="email" placeholder="Insira o seu e-mail" />
+                            <input onChange={(evt) => setEmail(evt.target.value)} onKeyDown={autenticarEnter} className="form-control" type="email" id="email" placeholder="Insira o seu e-mail" />
                             <span id="emailInvalido" className={EstiloLogin.naoMostrar}>E-mail inválido</span>
                             <label htmlFor="senha">Senha</label>
-                            <input onChange={(evt) => setSenha(evt.target.value)} className="form-control" type="password" id="senha" />
+                            <input onChange={(evt) => setSenha(evt.target.value)} onKeyDown={autenticarEnter} className="form-control" type="password" id="senha" />
                             {tipo === 'ok' && <span>Entrou</span>}
                             {tipo === 'erro' && <span>Não entrou</span>}
                             <div className={EstiloLogin.botao}>
