@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     usuarioEmail: '',
-    usuarioLogado: 0
+    usuarioLogado: 0,
+    id: ''
 }
 
 function usuarioReducer(state = INITIAL_STATE, action){
@@ -9,6 +10,8 @@ function usuarioReducer(state = INITIAL_STATE, action){
             return {...state, usuarioLogado: 1, usuarioEmail: action.usuarioEmail}
         case 'LOGOUT':
             return {...state, usuarioLogado: 0, usuarioEmail: null}
+        case 'EDITAR':
+            return {...state, id: action.id}
         default:
             return state;
     }

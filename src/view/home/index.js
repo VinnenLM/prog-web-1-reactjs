@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import firestore from '../../config/firebase';
 import { collection, deleteDoc, doc, onSnapshot, query } from 'firebase/firestore'
 
 import EstiloHome from './home.module.css';
-
+import { useDispatch } from "react-redux";
 
 function Home() {
 
     const [minhaColecao, setMinhaColecao] = useState([]);
+
+    const dispatch = useDispatch();
+    let navigate = useNavigate();
 
     useEffect(() => {
 
@@ -31,9 +34,13 @@ function Home() {
     }, []);
 
     const excluirColecao = (id) => {
-        deleteDoc(doc(firestore, "flashcards", id));
-        window.location.reload(false);
-      }
+        deleteDoc(doc(firestore, "flashcards", id)).then(window.location.reload());
+    }
+
+    function editarColecao(id) {
+        dispatch({ type: 'EDITAR', id: id })
+        navigate('/editar-colecao')
+    }
 
     const ListaColecoes = () => {
         if (minhaColecao.length > 0) {
@@ -43,7 +50,7 @@ function Home() {
                         minhaColecao.map((colecao) =>
                             <div key={colecao.id}>
                                 <div id={colecao.id} className={EstiloHome.cartao}>
-                                    <div className={EstiloHome.editarCartao}><i className="bi bi-pencil"></i></div>
+                                    <div className={EstiloHome.editarCartao}><i onClick={() => editarColecao(colecao.id)} className="bi bi-pencil"></i></div>
                                     <div className={EstiloHome.cartaoImagem}><img src={colecao.imagem} alt="" /></div>
                                     <div className={EstiloHome.cartaoNome}>
                                         <span>{colecao.nome}</span>
@@ -67,6 +74,7 @@ function Home() {
     return (
 
         <>
+
             <div className={`${EstiloHome.containerPrincipal} ${EstiloHome.botao}`}>
                 <Link to="/nova-colecao" className={`${EstiloHome.btn} btn-default`}>Nova Coleção</Link>
             </div>
