@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import EstiloEditarColecao from './editar-colecao.module.css';
 
 import { doc, updateDoc } from 'firebase/firestore'
-import { useSelector } from "react-redux";
 import firestore from '../../config/firebase';
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 function EditarColecao() {
 
@@ -14,7 +13,7 @@ function EditarColecao() {
     const [imagem, setImagem] = useState([]);
     const [estado, setEstado] = useState('');
 
-    let idColecao = useSelector(state => state.id);
+    const { idColecao } = useParams();
 
     function inserirImagem(evt) {
 

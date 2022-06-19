@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import firestore from '../../config/firebase';
 import { collection, deleteDoc, doc, onSnapshot, query } from 'firebase/firestore'
 
 import EstiloHome from './home.module.css';
-import { useDispatch } from "react-redux";
 
 function Home() {
 
     const [minhaColecao, setMinhaColecao] = useState([]);
-
-    const dispatch = useDispatch();
-    let navigate = useNavigate();
 
     useEffect(() => {
 
@@ -37,11 +33,6 @@ function Home() {
         deleteDoc(doc(firestore, "flashcards", id)).then(window.location.reload());
     }
 
-    function editarColecao(idColecao) {
-        dispatch({ type: 'IDCOLECAO', idColecao: idColecao })
-        navigate('/editar-colecao')
-    }
-
     const ListaColecoes = () => {
         if (minhaColecao.length > 0) {
             return (
@@ -50,11 +41,10 @@ function Home() {
                         minhaColecao.map((colecao) =>
                             <div key={colecao.id}>
                                 <div id={colecao.id} className={EstiloHome.cartao}>
-                                    <div className={EstiloHome.editarCartao}><i onClick={() => editarColecao(colecao.id)} className="bi bi-pencil"></i></div>
+                                    <div className={EstiloHome.editarCartao}><Link to={`/editar-colecao/${colecao.id}`}><i className="bi bi-pencil"></i></Link></div>
                                     <div className={EstiloHome.cartaoImagem}><img src={colecao.imagem} alt="" /></div>
                                     <div className={EstiloHome.cartaoNome}>
                                         <Link to={`/cartao/${colecao.id}`}>{colecao.nome}</Link>
-                                        {/* <span onClick={() => colecaoCartoes(colecao.id, colecao.nome)}>{colecao.nome}</span> */}
                                     </div>
                                     <div className={EstiloHome.excluirCartao}><i onClick={() => excluirColecao(colecao.id)} className="bi bi-trash3"></i></div>
                                 </div>

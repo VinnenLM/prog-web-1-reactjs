@@ -29,7 +29,7 @@ function App() {
           <Route exact path='/home' element={<Home />} />
           <Route path='/cartao/:idColecao' element={<Cartao />} />
           <Route exact path='/index' element={<Index />} />
-          <Route exact path='/editar-colecao' element={<EditarColecao />} />
+          <Route path='/editar-colecao/:idColecao' element={<EditarColecao />} />
         </Routes>
       </BrowserRouter>
     </Provider>
