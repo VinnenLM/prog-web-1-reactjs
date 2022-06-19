@@ -27,7 +27,7 @@ function App() {
           <Route exact path='/nova-colecao' element={<NovaColecao />} />
           <Route exact path='/novo-cartao' element={<NovoCartao />} />
           <Route exact path='/home' element={<Home />} />
-          <Route exact path='/cartao' element={<Cartao />} />
+          <Route path='/cartao/:idColecao' element={<Cartao />} />
           <Route exact path='/index' element={<Index />} />
           <Route exact path='/editar-colecao' element={<EditarColecao />} />
         </Routes>

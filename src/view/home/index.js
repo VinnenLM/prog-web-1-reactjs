@@ -37,8 +37,8 @@ function Home() {
         deleteDoc(doc(firestore, "flashcards", id)).then(window.location.reload());
     }
 
-    function editarColecao(id) {
-        dispatch({ type: 'EDITAR', id: id })
+    function editarColecao(idColecao) {
+        dispatch({ type: 'IDCOLECAO', idColecao: idColecao })
         navigate('/editar-colecao')
     }
 
@@ -53,7 +53,8 @@ function Home() {
                                     <div className={EstiloHome.editarCartao}><i onClick={() => editarColecao(colecao.id)} className="bi bi-pencil"></i></div>
                                     <div className={EstiloHome.cartaoImagem}><img src={colecao.imagem} alt="" /></div>
                                     <div className={EstiloHome.cartaoNome}>
-                                        <span>{colecao.nome}</span>
+                                        <Link to={`/cartao/${colecao.id}`}>{colecao.nome}</Link>
+                                        {/* <span onClick={() => colecaoCartoes(colecao.id, colecao.nome)}>{colecao.nome}</span> */}
                                     </div>
                                     <div className={EstiloHome.excluirCartao}><i onClick={() => excluirColecao(colecao.id)} className="bi bi-trash3"></i></div>
                                 </div>
