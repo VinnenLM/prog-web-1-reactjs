@@ -1,7 +1,7 @@
 import { collection, documentId, onSnapshot, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Cartoes from "../../components/cartoes";
+import Linha from "../../components/linha";
 import firestore from "../../config/firebase";
 import EstiloCartao from './cartao.module.css';
 
@@ -66,7 +66,7 @@ function Cartao() {
 
             <main className={EstiloCartao.containerPrincipal}>
 
-                {meusCartoes.map(cartao => <Cartoes id={cartao.id} frente={cartao.frente} verso={cartao.verso} idColecao={idColecao} />)}
+                {meusCartoes.map(cartao => <Linha id={cartao.id} frente={cartao.frente} verso={cartao.verso} idColecao={idColecao} />)}
 
                 <div className="d-flex">
                     <button className={`${EstiloCartao.btn} btn btn-success`} id={EstiloCartao.salvar}>Jogar!</button>
