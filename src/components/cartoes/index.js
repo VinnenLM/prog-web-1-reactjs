@@ -15,7 +15,7 @@ function Cartoes({ id, frente, verso, idColecao }) {
             {
                 <div>
 
-                    <ul className="list-group" data-idcartao="1">
+                    <ul className="list-group">
                         <li className={`${EstiloCartoes.listGroupItem} list-group-item`}>
                             <div className={EstiloCartoes.nomeColecao}>
                                 <span to="/novo-cartao">{frente}</span>

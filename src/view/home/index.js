@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import firestore from '../../config/firebase';
-import { collection, deleteDoc, doc, onSnapshot, query } from 'firebase/firestore'
+import { collection, onSnapshot, query } from 'firebase/firestore'
 
 import EstiloHome from './home.module.css';
+import Colecoes from "../../components/colecoes";
 
 function Home() {
 
@@ -29,38 +30,6 @@ function Home() {
 
     }, []);
 
-    const excluirColecao = (id) => {
-        deleteDoc(doc(firestore, "flashcards", id)).then(window.location.reload());
-    }
-
-    const ListaColecoes = () => {
-        if (minhaColecao.length > 0) {
-            return (
-                <div className={EstiloHome.cartoes}>
-                    {
-                        minhaColecao.map((colecao) =>
-                            <div key={colecao.id}>
-                                <div id={colecao.id} className={EstiloHome.cartao}>
-                                    <div className={EstiloHome.editarCartao}><Link to={`/editar-colecao/${colecao.id}`}><i className="bi bi-pencil"></i></Link></div>
-                                    <div className={EstiloHome.cartaoImagem}><img src={colecao.imagem} alt="" /></div>
-                                    <div className={EstiloHome.cartaoNome}>
-                                        <Link to={`/cartao/${colecao.id}`}>{colecao.nome}</Link>
-                                    </div>
-                                    <div className={EstiloHome.excluirCartao}><i onClick={() => excluirColecao(colecao.id)} className="bi bi-trash3"></i></div>
-                                </div>
-                            </div>
-                        )
-                    }
-                </div>
-            );
-        }
-
-        return (
-            <div>
-                <p>Lista vazia!</p>
-            </div>
-        )
-    }
 
     return (
 
@@ -71,9 +40,9 @@ function Home() {
             </div>
 
             <div className={EstiloHome.containerPrincipal}>
-
-                <ListaColecoes />
-
+                <div className={EstiloHome.cartoes}>
+                    {minhaColecao.map(colecao => <Colecoes id={colecao.id} nome={colecao.nome} descricao={colecao.descricao} imagem={colecao.imagem} />)}
+                </div>
             </div>
 
             <div className="modal fade" id="myModal" tabIndex="-1" role="dialog">
