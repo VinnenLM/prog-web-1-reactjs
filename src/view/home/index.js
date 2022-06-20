@@ -4,7 +4,7 @@ import firestore from '../../config/firebase';
 import { collection, onSnapshot, query } from 'firebase/firestore'
 
 import EstiloHome from './home.module.css';
-import Colecoes from "../../components/colecoes";
+import Colecao from "../../components/colecao";
 
 function Home() {
 
@@ -41,7 +41,7 @@ function Home() {
 
             <div className={EstiloHome.containerPrincipal}>
                 <div className={EstiloHome.cartoes}>
-                    {minhaColecao.map(colecao => <Colecoes id={colecao.id} nome={colecao.nome} descricao={colecao.descricao} imagem={colecao.imagem} />)}
+                    {minhaColecao.map(colecao => <Colecao id={colecao.id} nome={colecao.nome} descricao={colecao.descricao} imagem={colecao.imagem} />)}
                 </div>
             </div>
 
