@@ -72,7 +72,7 @@ body, html {
     border: 1px solid grey;
 }
 
-.nomeColecao>a {
+.nomeColecao>span {
     color: black;
     font-size: 18px;
     font-weight: bold;

@@ -66,7 +66,7 @@ function Cartao() {
 
             <main className={EstiloCartao.containerPrincipal}>
 
-                {meusCartoes.map(cartao => <Cartoes id={cartao.id} frente={cartao.frente} verso={cartao.verso} idColecao={cartao.idColecao} />)}
+                {meusCartoes.map(cartao => <Cartoes id={cartao.id} frente={cartao.frente} verso={cartao.verso} idColecao={idColecao} />)}
 
                 <div className="d-flex">
                     <button className={`${EstiloCartao.btn} btn btn-success`} id={EstiloCartao.salvar}>Jogar!</button>
