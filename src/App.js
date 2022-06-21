@@ -22,7 +22,7 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route exact path='/' element={<Login />} />
+            <Route exact path='/' element={<Index />} />
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/cadastro' element={<Cadastro />} />
             <Route path='/editar-cartao/:idColecao/:idCartao' element={<EditarCartao />} />
