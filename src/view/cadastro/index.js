@@ -3,6 +3,7 @@ import EstiloCadastro from './cadastro.module.css';
 
 import "../../config/firebase";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { Navigate } from "react-router-dom";
 
 function Cadastro() {
 
@@ -10,10 +11,9 @@ function Cadastro() {
     const [senha, setSenha] = useState();
     const [tipo, setTipo] = useState();
     const [msg, setMsg] = useState();
-    //const [carregando, setCarregando] = useState();
+    const [estado, setEstado] = useState('');
 
     function cadastrar() {
-        //setCarregando(1); //caso queira usar um icone de carregar, fazer a verificação no html
         setMsg(null);
 
         if (!email || !senha) {
@@ -23,12 +23,9 @@ function Cadastro() {
             const auth = getAuth();
             createUserWithEmailAndPassword(auth, email, senha)
                 .then((userCredential) => {
-                    //setCarregando(0);
-                    setTipo('ok');
-                    //senha tem q ter pelo menos 6 caracteres
+                    setEstado('cadastrado');
                 })
                 .catch((error) => {
-                    //setCarregando(0);
                     setTipo('erro');
                     setMsg(error.message);
                 });
@@ -39,6 +36,9 @@ function Cadastro() {
 
     return (
         <main>
+
+            {estado === 'cadastrado' ? <Navigate to='/login' replace /> : null}
+
             <div className={EstiloCadastro.containerPrincipal}>
                 <div className={EstiloCadastro.titulo}>
                     <h1>Cadastre-se</h1>
@@ -55,8 +55,6 @@ function Cadastro() {
                             <input onChange={(evt) => setSenha(evt.target.value)} type="password" className={`${EstiloCadastro.inputsCadastro} form-control`} id="senha" />
                             <label htmlFor="repetirSenha">Repetir a senha</label>
                             <input type="password" className={`${EstiloCadastro.inputsCadastro} form-control`} id="repetirSenha" />
-                            <span id="senhaErrada" className={EstiloCadastro.naoMostrar}>Senha não confere</span>
-                            {tipo === 'ok' && <span>Deu bom</span>}
                             {tipo === 'erro' && <span>{msg}</span>}
                             <div className={EstiloCadastro.botao}>
                                 <button id="cadastrar" className="btn mt-3" type="button" onClick={cadastrar}>Cadastrar</button>

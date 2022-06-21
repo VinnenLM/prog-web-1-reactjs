@@ -14,6 +14,7 @@ function Login() {
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     const [tipo, setTipo] = useState();
+    const [msg, setMsg] = useState();
 
     function autenticar() {
         const auth = getAuth();
@@ -23,7 +24,8 @@ function Login() {
                 dispatch({ type: 'LOGIN', usuarioEmail: email })
             })
             .catch((error) => {
-                setTipo('erro')
+                setTipo('erro');
+                setMsg(error.message)
             });
     }
 
@@ -47,11 +49,9 @@ function Login() {
                         <form action="/cadastro" method="post">
                             <label htmlFor="email">Email</label>
                             <input onChange={(evt) => setEmail(evt.target.value)} onKeyDown={autenticarEnter} className="form-control" type="email" id="email" placeholder="Insira o seu e-mail" />
-                            <span id="emailInvalido" className={EstiloLogin.naoMostrar}>E-mail inválido</span>
                             <label htmlFor="senha">Senha</label>
                             <input onChange={(evt) => setSenha(evt.target.value)} onKeyDown={autenticarEnter} className="form-control" type="password" id="senha" />
-                            {tipo === 'ok' && <span>Entrou</span>}
-                            {tipo === 'erro' && <span>Não entrou</span>}
+                            {tipo === 'erro' && <span>{msg}</span>}
                             <div className={EstiloLogin.botao}>
                                 <button id="entrar" className={`${EstiloLogin.btn} btn mt-3`} type="button" onClick={autenticar}>Entrar</button>
                             </div>
