@@ -9,6 +9,7 @@ function Cartao() {
 
     const [meusCartoes, setMeusCartoes] = useState([]);
     const [minhaColecao, setMinhaColecao] = useState([]);
+    const [pesquisa, setPesquisa] = useState([]);
 
     const { idColecao } = useParams();
 
@@ -23,11 +24,13 @@ function Cartao() {
 
         onSnapshot(qCartao, (result) => {
             result.forEach((doc) => {
-                const myDoc = {
-                    ...doc.data(),
-                    id: doc.id
+                if (doc.data().frente.indexOf(pesquisa) >= 0) {
+                    const myDoc = {
+                        ...doc.data(),
+                        id: doc.id
+                    }
+                    cartao.push(myDoc)
                 }
-                cartao.push(myDoc)
             });
 
             setMeusCartoes(cartao)
@@ -45,7 +48,7 @@ function Cartao() {
             setMinhaColecao(colecao)
         });
 
-    }, [idColecao]);
+    }, [idColecao, pesquisa]);
 
     return (
         <div>
@@ -56,7 +59,7 @@ function Cartao() {
                     <div className="input-group-prepend">
                         <button className="btn btn-default"><i className="bi bi-search"></i></button>
                     </div>
-                    <input className="form-control" type="text" placeholder="Busque por um elemento" />
+                    <input onChange={(evt) => setPesquisa(evt.target.value)} className="form-control" type="text" placeholder="Busque por um elemento" />
                 </div>
             </div>
 
