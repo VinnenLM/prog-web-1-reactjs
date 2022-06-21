@@ -1,6 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit';
 import usuarioReducer from './usuarioReducer';
 
-const store = configureStore({reducer: usuarioReducer});
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-export default store;
+const persistConfig = {
+    key: 'webpagecards',
+    storage,
+}
+
+
+const persistencia = persistReducer(persistConfig, usuarioReducer);
+
+const store = configureStore(
+    {
+        reducer: persistencia,
+        middleware: getDefaultMiddleware => getDefaultMiddleware({
+            serializableCheck: false
+        })
+    });
+const persistor = persistStore(store);
+
+export { store, persistor };
