@@ -9,6 +9,7 @@ function EditarCartao() {
     const [frente, setFrente] = useState('');
     const [verso, setVerso] = useState('');
     const [estado, setEstado] = useState('');
+    const [msg, setMsg] = useState('');
 
     const [minhaColecao, setMinhaColecao] = useState([]);
 
@@ -36,20 +37,26 @@ function EditarCartao() {
 
     const alterarDoc = () => {
 
-        const newDoc = {
-            frente: frente,
-            verso: verso,
-            idColecao: idColecao
+        if (frente === '' || verso === '') {
+            setMsg('erro');
+        } else {
+            const newDoc = {
+                frente: frente,
+                verso: verso,
+                idColecao: idColecao
+            }
+
+            const docRef = doc(firestore, "cartoes", idCartao)
+
+            updateDoc(docRef, newDoc)
+
+            setFrente('');
+            setVerso('');
+
+            setEstado('alterado');
         }
 
-        const docRef = doc(firestore, "cartoes", idCartao)
 
-        updateDoc(docRef, newDoc)
-
-        setFrente('');
-        setVerso('');
-
-        setEstado('alterado');
     }
 
     return (
@@ -77,6 +84,9 @@ function EditarCartao() {
                 <div className="d-flex justify-content-center">
                     <button className={`${EstiloEditarCartao.btn} btn btn-default`} id={EstiloEditarCartao.salvar} onClick={() => alterarDoc()}>Salvar alterações</button>
                 </div>
+
+                {msg === 'erro' && <span>Algum campo vazio!</span>}                
+
             </div>
         </main>
     )

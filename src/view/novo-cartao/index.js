@@ -12,6 +12,7 @@ function NovoCartao() {
     const [verso, setVerso] = useState('');
     const [estado, setEstado] = useState('');
     const [minhaColecao, setMinhaColecao] = useState([]);
+    const [msg, setMsg] = useState('');
 
     useEffect(() => {
 
@@ -33,21 +34,27 @@ function NovoCartao() {
     }, [idColecao]);
 
     function adicionar(evt) {
-        evt.preventDefault();
-        const documento = {
-            frente: frente,
-            verso: verso,
-            idColecao: idColecao,
+
+        if (frente === '' || verso === '') {
+            setMsg('erro');
+        } else {
+
+            evt.preventDefault();
+            const documento = {
+                frente: frente,
+                verso: verso,
+                idColecao: idColecao,
+            }
+
+            const colecao = collection(firestore, "cartoes");
+
+            addDoc(colecao, documento);
+
+            setFrente('');
+            setVerso('');
+
+            setEstado('salvo');
         }
-
-        const colecao = collection(firestore, "cartoes");
-
-        addDoc(colecao, documento);
-
-        setFrente('');
-        setVerso('');
-
-        setEstado('salvo');
     }
 
 
@@ -78,6 +85,9 @@ function NovoCartao() {
                 <div className="d-flex">
                     <button className={`${EstiloNovoCartao.btn}`} id={EstiloNovoCartao.salvar} onClick={adicionar}>Cadastrar</button>
                 </div>
+
+                {msg === 'erro' && <span>Algum campo vazio!</span>}
+
             </div>
         </main>
     )

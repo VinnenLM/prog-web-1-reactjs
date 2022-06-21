@@ -11,25 +11,32 @@ function NovaColecao() {
     const [imagemNome, setImagemNome] = useState('');
     const [imagem, setImagem] = useState([]);
     const [estado, setEstado] = useState('');
+    const [msg, setMsg] = useState('');
 
     function adicionar(evt) {
         evt.preventDefault();
-        const documento = {
-            nome: nome,
-            descricao: descricao,
-            imagem: imagem,
+
+        if(nome === '' || descricao === '' || imagemNome === ''){
+            setMsg('erro');
+        } else {
+            const documento = {
+                nome: nome,
+                descricao: descricao,
+                imagem: imagem,
+            }
+    
+            const colecao = collection(firestore, "flashcards");
+    
+            addDoc(colecao, documento);
+    
+            setNome('');
+            setDescricao('');
+            setImagem('');
+            setImagemNome('');
+    
+            setEstado('salvo');
         }
 
-        const colecao = collection(firestore, "flashcards");
-
-        addDoc(colecao, documento);
-
-        setNome('');
-        setDescricao('');
-        setImagem('');
-        setImagemNome('');
-
-        setEstado('salvo');
     }
 
     function inserirImagem(evt) {
@@ -80,6 +87,8 @@ function NovaColecao() {
                         <div className={EstiloNovaColecao.botao}>
                             <button type="submit" className="btn mt-5" id={EstiloNovaColecao.salvar} onClick={adicionar}>Cadastrar</button>
                         </div>
+
+                        {msg === 'erro' && <span>Algum campo vazio!</span>}
 
                     </div>
 

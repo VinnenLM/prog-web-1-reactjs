@@ -12,6 +12,7 @@ function EditarColecao() {
     const [imagemNome, setImagemNome] = useState('');
     const [imagem, setImagem] = useState([]);
     const [estado, setEstado] = useState('');
+    const [msg, setMsg] = useState('');
 
     const { idColecao } = useParams();
 
@@ -33,22 +34,27 @@ function EditarColecao() {
 
     const alterarDoc = () => {
 
-        const newDoc = {
-            nome: nome,
-            descricao: descricao,
-            imagem: imagem
+        if (nome === '' || descricao === '' || imagemNome === '') {
+            setMsg('erro');
+        } else {
+
+            const newDoc = {
+                nome: nome,
+                descricao: descricao,
+                imagem: imagem
+            }
+
+            const docRef = doc(firestore, "flashcards", idColecao)
+
+            updateDoc(docRef, newDoc)
+
+            setNome('');
+            setDescricao('');
+            setImagem('');
+            setImagemNome('');
+
+            setEstado('alterado');
         }
-
-        const docRef = doc(firestore, "flashcards", idColecao)
-
-        updateDoc(docRef, newDoc)
-
-        setNome('');
-        setDescricao('');
-        setImagem('');
-        setImagemNome('');
-
-        setEstado('alterado');
     }
 
     return (
@@ -82,6 +88,8 @@ function EditarColecao() {
                     <div className={EstiloEditarColecao.botao}>
                         <button type="submit" className={`${EstiloEditarColecao.btn} btn mt-5`} id={EstiloEditarColecao.salvar} onClick={() => alterarDoc()}>Salvar Alterações</button>
                     </div>
+
+                    {msg === 'erro' && <span>Algum campo vazio!</span>}
 
                 </div>
 
