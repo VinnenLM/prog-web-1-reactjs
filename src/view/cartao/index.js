@@ -61,7 +61,7 @@ function Cartao() {
             </div>
 
             <div className={EstiloCartao.novoCartao}>
-                <Link to="/novo-cartao" className={EstiloCartao.btn}>Novo Cartão</Link>
+                <Link to={`/novo-cartao/${idColecao}`} className={EstiloCartao.btn}>Novo Cartão</Link>
             </div>
 
             <main className={EstiloCartao.containerPrincipal}>
