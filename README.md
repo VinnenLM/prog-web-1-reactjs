@@ -34,3 +34,9 @@
 
 ## Novo Cartão
 <img src="public/NovoCartao.png" />
+
+## Jogar
+<img src="public/Jogar.png" />
+
+## Pontuação
+<img src="public/Pontuacao.png" />

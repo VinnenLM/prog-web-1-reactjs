@@ -1,35 +1,36 @@
 .header {
-    background-color: #413d5d;
-    vertical-align: middle;
-    padding: 15px;
+  background-color: #413d5d;
+  vertical-align: middle;
+  padding: 15px;
 }
 
 .header__menu {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
 }
 
-.logo > span{
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: 5px;
-    vertical-align: middle;
+.logo > a > span {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 5px;
+  vertical-align: middle;
+  color: white;
 }
 
 .imgLogo {
-    width: 25px;
+  width: 25px;
 }
 
-.opcoes > a{
-    line-height: 2rem;
-    color: white;
+.opcoes > a {
+  line-height: 2rem;
+  color: white;
 }
 
-.entrar{
-    margin-left: 20px;
+.entrar {
+  margin-left: 20px;
 }
 
-.sair{
-    margin-left: 20px;
+.sair {
+  margin-left: 20px;
 }

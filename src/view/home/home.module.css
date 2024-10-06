@@ -1,36 +1,36 @@
 .containerPrincipal {
-    margin: 0 auto;
-    width: 60%;
+  margin: 0 auto;
+  width: 60%;
 }
 
-.botao{
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 50px;
-    margin-bottom: 50px;
+.botao {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
-.botao>.btn {
-    background-color: #5e5796 !important;
-    color: white;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 12px;
-    font-weight: 600;
-    margin-right: 35px;
+.botao > .btn {
+  background-color: #5e5796 !important;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 35px;
 }
 
-.cartoes{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 25%);
-    width: 100%;
+.cartoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 25%);
+  width: 100%;
 }
 
-#myModal{
-    color: black;
+#myModal {
+  color: black;
 }
 
-.modal-footer > button{
-    width: 85px;
-    text-align: center;
+.modal-footer > button {
+  width: 85px;
+  text-align: center;
 }

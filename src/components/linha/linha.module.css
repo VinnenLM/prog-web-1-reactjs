@@ -1,15 +1,15 @@
-.nomeColecao>span {
-    color: black;
-    font-size: 18px;
-    font-weight: bold;
-    vertical-align: middle;
+.nomeColecao > span {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  vertical-align: middle;
 }
 
 .listGroupItem {
-    padding: .2rem .6rem !important;
-    border-radius: 0 !important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: .5px solid grey;
+  padding: 0.2rem 0.6rem !important;
+  border-radius: 0 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.5px solid grey;
 }
