@@ -70,7 +70,7 @@ function NovaColecao() {
 
                         <div className="input-group">
                             <input hidden accept="image/*" id="imagem" type="file" onChange={inserirImagem} />
-                            <label className="custom-file-label" htmlFor="imagem">{imagemNome === '' ? 'Escolha uma imagem para a coleção...' : imagemNome}</label>
+                            <label className="seletor-arquivo" htmlFor="imagem">{imagemNome === '' ? 'Escolha uma imagem para a coleção...' : imagemNome}</label>
                         </div>
 
                         <div className={EstiloNovaColecao.botao}>

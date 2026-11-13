@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { excluirCartao, mensagemErro } from "../../services/colecoes";
 import EstiloLinha from "./linha.module.css";
 
-function Linha({ id, frente, verso, idColecao, somenteLeitura }) {
+function Linha({ id, frente, verso, idColecao, somenteLeitura, mostrarTodas }) {
+  const [aberto, setAberto] = useState(false);
+  useEffect(() => setAberto(mostrarTodas), [mostrarTodas]);
   const [showModal, setShow] = useState(false);
   const [erro, setErro] = useState("");
 
@@ -25,10 +27,22 @@ function Linha({ id, frente, verso, idColecao, somenteLeitura }) {
           <li className={`${EstiloLinha.listGroupItem} list-group-item`}>
             <div className={EstiloLinha.nomeColecao}>
               <span>{frente}</span>
-              <span className="text-muted"> → {verso}</span>
+              {aberto && <span className={EstiloLinha.resposta}> → {verso}</span>}
             </div>
-            {!somenteLeitura && (
-              <div className={EstiloLinha.botao}>
+            <div className={EstiloLinha.botao}>
+              <button
+                type="button"
+                className={`${EstiloLinha.olho} ${aberto ? EstiloLinha.olhoAtivo : ""}`}
+                onClick={() => setAberto(!aberto)}
+                title={aberto ? "Ocultar resposta" : "Ver resposta"}
+                aria-label={aberto ? "Ocultar resposta" : "Ver resposta"}
+                aria-pressed={aberto}
+              >
+                <i className={`bi ${aberto ? "bi-eye-slash" : "bi-eye"}`}></i>
+                <span>{aberto ? "Ocultar" : "Ver resposta"}</span>
+              </button>
+              {!somenteLeitura && (
+                <>
                 <Link
                   to={`/editar-cartao/${idColecao}/${id}`}
                   className="btn btn-primary text-white"
@@ -43,8 +57,9 @@ function Linha({ id, frente, verso, idColecao, somenteLeitura }) {
                 >
                   <i className="bi bi-trash-fill"></i>
                 </button>
-              </div>
-            )}
+                </>
+              )}
+            </div>
           </li>
         </ul>
       </div>

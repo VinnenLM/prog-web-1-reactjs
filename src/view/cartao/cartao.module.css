@@ -44,9 +44,63 @@
   background: var(--roxo-claro);
 }
 
-#salvar {
-  margin: 22px 0 50px;
-  background: var(--verde) !important;
-  border: 0 !important;
-  padding: 11px 34px;
+.barraLista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  color: var(--suave);
+  font-size: 13px;
+}
+
+.mostrarTodas {
+  background: none;
+  border: 0;
+  color: var(--destaque);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mostrarTodas:hover {
+  text-decoration: underline;
+}
+
+.rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 24px 0 50px;
+}
+
+.voltar,
+.jogar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 26px;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #fff !important;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.voltar {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.voltar:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.jogar {
+  background: var(--verde);
+  box-shadow: var(--sombra);
+}
+
+.jogar:hover {
+  background: #38b57d;
+  transform: translateY(-1px);
 }

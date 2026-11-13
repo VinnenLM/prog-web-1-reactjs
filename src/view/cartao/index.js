@@ -14,6 +14,7 @@ function Cartao() {
   const somenteLeitura = mock || !uid;
 
   const [pesquisa, setPesquisa] = useState("");
+  const [mostrarTodas, setMostrarTodas] = useState(false);
   const [nomeColecao, setNomeColecao] = useState(mock ? buscarMock(idColecao)?.nome : "");
   const { cartoes, carregando, erro } = useCartoes(idColecao);
 
@@ -64,6 +65,15 @@ function Cartao() {
         {!carregando && !erro && cartoes.length === 0 && (
           <p>Esta coleção ainda não tem cartões.</p>
         )}
+        {cartoes.length > 0 && (
+          <div className={EstiloCartao.barraLista}>
+            <span>{cartoes.length} {cartoes.length === 1 ? "cartão" : "cartões"} · respostas ocultas</span>
+            <button type="button" className={EstiloCartao.mostrarTodas} onClick={() => setMostrarTodas(!mostrarTodas)}>
+              <i className={`bi ${mostrarTodas ? "bi-eye-slash" : "bi-eye"}`}></i>{" "}
+              {mostrarTodas ? "Ocultar todas" : "Ver todas as respostas"}
+            </button>
+          </div>
+        )}
         {filtrados.map((cartao) => (
           <Linha
             key={cartao.id}
@@ -72,18 +82,17 @@ function Cartao() {
             verso={cartao.verso}
             idColecao={idColecao}
             somenteLeitura={somenteLeitura}
+            mostrarTodas={mostrarTodas}
           />
         ))}
 
-        <div className="d-flex">
+        <div className={EstiloCartao.rodape}>
+          <Link className={EstiloCartao.voltar} to="/home">
+            <i className="bi bi-arrow-left"></i> Voltar
+          </Link>
           {cartoes.length > 0 && (
-            <Link
-              className={`${EstiloCartao.btn} btn btn-success`}
-              id={EstiloCartao.salvar}
-              to={`/jogo/${idColecao}`}
-              style={{ borderColor: "white" }}
-            >
-              Jogar!
+            <Link className={EstiloCartao.jogar} to={`/jogo/${idColecao}`}>
+              <i className="bi bi-play-fill"></i> Jogar!
             </Link>
           )}
         </div>

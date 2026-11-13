@@ -30,9 +30,37 @@
   font-weight: 700;
 }
 
-.nomeColecao > span + span {
-  color: var(--suave) !important;
+.resposta {
+  color: var(--destaque);
   font-size: 15px;
+  font-weight: 600;
+}
+
+.olho {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--suave);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 5px 11px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.olho:hover,
+.olhoAtivo {
+  background: var(--roxo);
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  .olho span {
+    display: none;
+  }
 }
 
 .botao {

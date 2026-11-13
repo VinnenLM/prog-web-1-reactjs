@@ -83,7 +83,7 @@ textarea.form-control {
   resize: vertical;
 }
 
-.custom-file-label {
+.seletor-arquivo {
   display: flex;
   align-items: center;
   width: 100%;
@@ -96,7 +96,7 @@ textarea.form-control {
   transition: border-color 0.15s, background 0.15s;
 }
 
-.custom-file-label:hover {
+.seletor-arquivo:hover {
   border-color: var(--roxo-claro);
   background: rgba(255, 255, 255, 0.05);
 }

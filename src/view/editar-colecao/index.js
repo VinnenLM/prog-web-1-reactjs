@@ -87,7 +87,7 @@ function EditarColecao() {
 
                     <div className="input-group">
                         <input hidden accept="image/*" id="imagem" type="file" onChange={inserirImagem} />
-                        <label className="custom-file-label" htmlFor="imagem">
+                        <label className="seletor-arquivo" htmlFor="imagem">
                             <img src={imagemNova || imagem} alt="" style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: 6, marginRight: 8 }} />
                             {imagemNome === '' ? 'Trocar imagem...' : imagemNome}
                         </label>
