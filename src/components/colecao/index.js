@@ -1,53 +1,61 @@
-import { deleteDoc, doc } from "firebase/firestore";
 import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import firestore from "../../config/firebase";
-import EstiloColecao from './colecao.module.css';
-import { Modal, Button } from "react-bootstrap";
+import { excluirColecao, mensagemErro } from "../../services/colecoes";
+import EstiloColecao from "./colecao.module.css";
 
-function Colecao({ id, nome, descricao, imagem }) {
-
+function Colecao({ id, nome, imagem, uid, somenteLeitura, total }) {
     const [showModal, setShow] = useState(false);
+    const [erro, setErro] = useState("");
+    const [excluindo, setExcluindo] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const excluirColecao = (id) => {
-        deleteDoc(doc(firestore, "flashcards", id))
-        setTimeout(() => {
-            window.location.reload(false);
-        }, 1000);
-    }
+    const excluir = async () => {
+        setExcluindo(true);
+        try {
+            await excluirColecao(id, uid);
+            setShow(false);
+        } catch (e) {
+            console.error(e);
+            setErro(mensagemErro(e));
+            setExcluindo(false);
+        }
+    };
 
     return (
         <>
             <div id={id} className={EstiloColecao.cartao}>
-                <div className={EstiloColecao.editarCartao}><Link to={`/editar-colecao/${id}`}><i className="bi bi-pencil"></i></Link></div>
+                {!somenteLeitura && (
+                    <div className={EstiloColecao.editarCartao}>
+                        <Link to={`/editar-colecao/${id}`} title="Editar coleção"><i className="bi bi-pencil"></i></Link>
+                    </div>
+                )}
                 <div className={EstiloColecao.cartaoImagem}><img src={imagem} alt="" /></div>
                 <div className={EstiloColecao.cartaoNome}>
                     <Link to={`/cartao/${id}`}>{nome}</Link>
                 </div>
-                <div className={EstiloColecao.excluirCartao}><i onClick={handleShow} className="bi bi-trash3"></i></div>
+                {somenteLeitura && <div className={EstiloColecao.selo}>Exemplo{total ? ` · ${total} cartões` : ""}</div>}
+                {!somenteLeitura && (
+                    <div className={EstiloColecao.excluirCartao}>
+                        <i onClick={() => { setErro(""); setShow(true); }} className="bi bi-trash3" title="Excluir coleção"></i>
+                    </div>
+                )}
             </div>
 
-            <Modal show={showModal} onHide={handleClose}>
+            <Modal show={showModal} onHide={() => setShow(false)}>
                 <Modal.Header>
                     <Modal.Title className="text-dark">Exclusão</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="text-dark">Tem certeza que deseja remover essa coleção? Isso excluirá todos os cartões contidos nela.</Modal.Body>
+                <Modal.Body className="text-dark">
+                    Tem certeza que deseja remover a coleção "{nome}"? Isso excluirá todos os cartões contidos nela.
+                    {erro && <p className="text-danger mt-2 mb-0">{erro}</p>}
+                </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={() => excluirColecao(id)}>
-                        Sim
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Cancelar
-                    </Button>
+                    <Button variant="primary" disabled={excluindo} onClick={excluir}>Sim</Button>
+                    <Button variant="primary" onClick={() => setShow(false)}>Cancelar</Button>
                 </Modal.Footer>
             </Modal>
         </>
-
     );
-
 }
 
 export default Colecao;

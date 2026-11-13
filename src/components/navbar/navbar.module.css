@@ -34,3 +34,11 @@
 .sair {
   margin-left: 20px;
 }
+
+.minhasColecoes {
+  margin-right: 20px;
+}
+
+.logo > a {
+  text-decoration: none;
+}

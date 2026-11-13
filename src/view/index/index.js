@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import './index.css';
 import SetaClicar from '../../assets/img/seta-clicar.png';
 import Seta from '../../assets/img/seta.png';
 
-function Login() {
+function Index() {
 
     const [visivel, setVisivel] = useState('naoVisivel');
     const [naoVisivel, setNaoVisivel] = useState('');
@@ -25,6 +26,10 @@ function Login() {
                 <div>
                     <h1 className='titulo'>Mind Booster</h1>
                     <h3 className='subTitulo'>Treine a sua memória com Flash Cards!</h3>
+                    <div className='chamada'>
+                        <Link to="/jogo" className='botaoChamada jogar'>Jogar sem login</Link>
+                        <Link to="/home" className='botaoChamada'>Ver coleções</Link>
+                    </div>
                 </div>
 
                 <div className='containerCartoes'>
@@ -69,4 +74,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Index;

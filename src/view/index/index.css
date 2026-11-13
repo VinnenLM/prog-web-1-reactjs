@@ -124,3 +124,32 @@ body, html {
     padding-left: 30px;
     padding-right: 30px;
 }
+.chamada {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.botaoChamada {
+    background: #5e5796;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.botaoChamada:hover {
+    background: #736ab3;
+    color: white;
+    text-decoration: none;
+}
+
+.botaoChamada.jogar {
+    background: #2f9e6b;
+}
+
+.botaoChamada.jogar:hover {
+    background: #38b57d;
+}

@@ -1,36 +1,80 @@
 .containerPrincipal {
   margin: 0 auto;
-  width: 60%;
+  width: min(1100px, 92%);
+  padding-bottom: 40px;
 }
 
-.botao {
+.topo {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 40px 0 10px;
 }
 
-.botao > .btn {
-  background-color: #5e5796 !important;
-  color: white;
+.pagina {
+  margin: 0;
+  font-weight: 700;
+}
+
+.aviso {
+  margin: 6px 0 0;
+  color: #cfcbe8;
+}
+
+.aviso a {
+  color: #d4ff00;
+  font-weight: 600;
+}
+
+.acoes {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  background-color: #5e5796;
+  color: white !important;
   border-radius: 5px;
   padding: 10px 20px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  margin-right: 35px;
+  text-decoration: none !important;
+}
+
+.btn:hover {
+  background-color: #736ab3;
+}
+
+.jogar {
+  background-color: #2f9e6b;
+}
+
+.jogar:hover {
+  background-color: #38b57d;
+}
+
+.secao {
+  margin: 32px 0 8px;
+  color: #cfcbe8;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .cartoes {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 25%);
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   width: 100%;
 }
 
-#myModal {
-  color: black;
+.vazio {
+  color: #cfcbe8;
 }
 
-.modal-footer > button {
-  width: 85px;
-  text-align: center;
+.erro {
+  background: #5a2740;
+  border-radius: 6px;
+  padding: 10px 14px;
 }

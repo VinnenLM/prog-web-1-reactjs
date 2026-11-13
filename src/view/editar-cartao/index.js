@@ -1,69 +1,61 @@
-import { collection, doc, documentId, onSnapshot, query, updateDoc, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
+import { atualizarCartao, carregarCartao, carregarColecao, mensagemErro } from "../../services/colecoes";
 import EstiloEditarCartao from './editar-cartao.module.css';
-import firestore from "../../config/firebase";
 
 function EditarCartao() {
+    const { idColecao, idCartao } = useParams();
 
     const [frente, setFrente] = useState('');
     const [verso, setVerso] = useState('');
-    const [estado, setEstado] = useState('');
+    const [estado, setEstado] = useState('carregando');
     const [msg, setMsg] = useState('');
-
-    const [minhaColecao, setMinhaColecao] = useState([]);
-
-    const { idColecao, idCartao } = useParams();
-
+    const [nomeColecao, setNomeColecao] = useState('');
 
     useEffect(() => {
-
-        const colecao = []
-        const qColecao = query(collection(firestore, "flashcards"), where(documentId(), '==', idColecao));
-
-        onSnapshot(qColecao, (result) => {
-            result.forEach((doc) => {
-                const myDoc = {
-                    ...doc.data(),
-                    id: doc.id
+        carregarColecao(idColecao)
+            .then((c) => setNomeColecao(c?.nome || ''))
+            .catch(() => setNomeColecao(''));
+        carregarCartao(idCartao)
+            .then((c) => {
+                if (!c) {
+                    setEstado('inexistente');
+                    return;
                 }
-                colecao.push(myDoc)
+                setFrente(c.frente || '');
+                setVerso(c.verso || '');
+                setEstado('pronto');
+            })
+            .catch((e) => {
+                console.error(e);
+                setMsg(mensagemErro(e));
+                setEstado('erro');
             });
+    }, [idColecao, idCartao]);
 
-            setMinhaColecao(colecao)
-        });
-
-    }, [idColecao]);
-
-    const alterarDoc = () => {
-
-        if (frente === '' || verso === '') {
-            setMsg('erro');
-        } else {
-            const newDoc = {
-                frente: frente,
-                verso: verso,
-                idColecao: idColecao
-            }
-
-            const docRef = doc(firestore, "cartoes", idCartao)
-
-            updateDoc(docRef, newDoc)
-
-            setFrente('');
-            setVerso('');
-
-            setEstado('alterado');
+    const alterarDoc = async () => {
+        if (frente.trim() === '' || verso.trim() === '') {
+            setMsg('Preencha a frente e o verso!');
+            return;
         }
-
-
+        try {
+            await atualizarCartao(idCartao, { frente: frente.trim(), verso: verso.trim() });
+            setEstado('alterado');
+        } catch (e) {
+            console.error(e);
+            setMsg(mensagemErro(e));
+        }
     }
+
+    if (estado === 'alterado') return <Navigate to={`/cartao/${idColecao}`} replace />;
+    if (estado === 'carregando') return <p style={{ textAlign: 'center', marginTop: '3rem' }}>Carregando...</p>;
+    if (estado === 'inexistente') return <p style={{ textAlign: 'center', marginTop: '3rem' }}>Cartão não encontrado.</p>;
+    if (estado === 'erro') return <p style={{ textAlign: 'center', marginTop: '3rem' }}>{msg}</p>;
 
     return (
         <main>
-            {estado === 'alterado' ? <Navigate to={`/cartao/${idColecao}`} replace /> : null}
             <div className={EstiloEditarCartao.containerPrincipal}>
-                {minhaColecao.map((colecao) => <span>Coleção - {colecao.nome}</span>)}
+                {nomeColecao && <span>Coleção - {nomeColecao}</span>}
 
                 <div className={EstiloEditarCartao.titulo}>
                     <h3>Atualize os dados da frente e do verso do flashcard</h3>
@@ -82,11 +74,10 @@ function EditarCartao() {
                 </div>
 
                 <div className="d-flex justify-content-center">
-                    <button className={`${EstiloEditarCartao.btn} btn btn-default`} id={EstiloEditarCartao.salvar} onClick={() => alterarDoc()}>Salvar alterações</button>
+                    <button className={`${EstiloEditarCartao.btn} btn btn-default`} id={EstiloEditarCartao.salvar} onClick={alterarDoc}>Salvar alterações</button>
                 </div>
 
-                {msg === 'erro' && <span>Algum campo vazio!</span>}                
-
+                {msg && <span>{msg}</span>}
             </div>
         </main>
     )

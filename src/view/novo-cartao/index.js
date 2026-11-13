@@ -1,70 +1,46 @@
-import { addDoc, collection, documentId, onSnapshot, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import firestore from '../../config/firebase';
+import { useUid } from "../../hooks/useColecoes";
+import { carregarColecao, criarCartao, mensagemErro } from "../../services/colecoes";
 import EstiloNovoCartao from './novo-cartao.module.css'
 
 function NovoCartao() {
-
     const { idColecao } = useParams();
+    const uid = useUid();
 
     const [frente, setFrente] = useState('');
     const [verso, setVerso] = useState('');
     const [estado, setEstado] = useState('');
-    const [minhaColecao, setMinhaColecao] = useState([]);
+    const [nomeColecao, setNomeColecao] = useState('');
     const [msg, setMsg] = useState('');
 
     useEffect(() => {
-
-        const colecao = []
-        const qColecao = query(collection(firestore, "flashcards"), where(documentId(), '==', idColecao));
-
-        onSnapshot(qColecao, (result) => {
-            result.forEach((doc) => {
-                const myDoc = {
-                    ...doc.data(),
-                    id: doc.id
-                }
-                colecao.push(myDoc)
-            });
-
-            setMinhaColecao(colecao)
-        });
-
+        carregarColecao(idColecao)
+            .then((c) => setNomeColecao(c?.nome || ''))
+            .catch(() => setNomeColecao(''));
     }, [idColecao]);
 
-    function adicionar(evt) {
-
-        if (frente === '' || verso === '') {
-            setMsg('erro');
-        } else {
-
-            evt.preventDefault();
-            const documento = {
-                frente: frente,
-                verso: verso,
-                idColecao: idColecao,
-            }
-
-            const colecao = collection(firestore, "cartoes");
-
-            addDoc(colecao, documento);
-
-            setFrente('');
-            setVerso('');
-
+    async function adicionar(evt) {
+        evt.preventDefault();
+        if (frente.trim() === '' || verso.trim() === '') {
+            setMsg('Preencha a frente e o verso!');
+            return;
+        }
+        try {
+            await criarCartao(uid, idColecao, { frente: frente.trim(), verso: verso.trim() });
             setEstado('salvo');
+        } catch (e) {
+            console.error(e);
+            setMsg(mensagemErro(e));
         }
     }
 
-
     return (
         <main>
-
             {estado === 'salvo' ? <Navigate to={`/cartao/${idColecao}`} replace /> : null}
 
             <div className={EstiloNovoCartao.containerPrincipal}>
-                {minhaColecao.map((colecao) => <span>Coleção - {colecao.nome}</span>)}
+                {nomeColecao && <span>Coleção - {nomeColecao}</span>}
 
                 <div className={EstiloNovoCartao.titulo}>
                     <h3>Preencha os dados da frente e do verso do flashcard</h3>
@@ -86,8 +62,7 @@ function NovoCartao() {
                     <button className={`${EstiloNovoCartao.btn}`} id={EstiloNovoCartao.salvar} onClick={adicionar}>Cadastrar</button>
                 </div>
 
-                {msg === 'erro' && <span>Algum campo vazio!</span>}
-
+                {msg && <span>{msg}</span>}
             </div>
         </main>
     )

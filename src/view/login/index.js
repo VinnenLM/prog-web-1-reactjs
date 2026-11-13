@@ -1,44 +1,46 @@
 import React, { useState } from "react";
 import EstiloLogin from './login.module.css';
 
-import { useSelector, useDispatch } from "react-redux";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useSelector } from "react-redux";
 import { Navigate } from 'react-router-dom';
-
-import "../../config/firebase";
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from "../../config/firebase";
+import { mensagemAuth } from "../../utils/erros";
 
 function Login() {
+    const logado = useSelector(state => state.usuarioLogado > 0);
 
-    const dispatch = useDispatch();
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const [msg, setMsg] = useState('');
+    const [carregando, setCarregando] = useState(false);
 
-    const [email, setEmail] = useState();
-    const [senha, setSenha] = useState();
-    const [tipo, setTipo] = useState();
-    const [msg, setMsg] = useState();
-
-    function autenticar() {
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, senha)
-            .then((userCredential) => {
-                setTipo('ok');
-                dispatch({ type: 'LOGIN', usuarioEmail: email })
-            })
-            .catch((error) => {
-                setTipo('erro');
-                setMsg(error.message)
-            });
+    async function autenticar() {
+        if (!email || !senha) {
+            setMsg('Informe e-mail e senha.');
+            return;
+        }
+        setCarregando(true);
+        setMsg('');
+        try {
+            // O redirecionamento acontece quando o App detecta a sessão.
+            await signInWithEmailAndPassword(auth, email.trim(), senha);
+        } catch (error) {
+            setMsg(mensagemAuth(error));
+            setCarregando(false);
+        }
     }
 
     function autenticarEnter(evt) {
-        if(evt.key === 'Enter'){
+        if (evt.key === 'Enter') {
+            evt.preventDefault();
             autenticar();
         }
     }
 
     return (
         <main>
-
-            {useSelector(state => state.usuarioLogado) > 0 ? <Navigate to='/home' replace /> : null}
+            {logado ? <Navigate to='/home' replace /> : null}
 
             <div className={EstiloLogin.containerPrincipal}>
                 <div className={EstiloLogin.titulo}>
@@ -46,14 +48,14 @@ function Login() {
                 </div>
                 <div className="input-group">
                     <div className={EstiloLogin.containerPrincipal}>
-                        <form action="/cadastro" method="post">
+                        <form onSubmit={(e) => e.preventDefault()}>
                             <label htmlFor="email">Email</label>
                             <input onChange={(evt) => setEmail(evt.target.value)} onKeyDown={autenticarEnter} className="form-control" type="email" id="email" placeholder="Insira o seu e-mail" />
                             <label htmlFor="senha">Senha</label>
                             <input onChange={(evt) => setSenha(evt.target.value)} onKeyDown={autenticarEnter} className="form-control" type="password" id="senha" />
-                            {tipo === 'erro' && <span>{msg}</span>}
+                            {msg && <span>{msg}</span>}
                             <div className={EstiloLogin.botao}>
-                                <button id="entrar" className={`${EstiloLogin.btn} btn mt-3`} type="button" onClick={autenticar}>Entrar</button>
+                                <button id="entrar" className={`${EstiloLogin.btn} btn mt-3`} type="button" onClick={autenticar} disabled={carregando}>Entrar</button>
                             </div>
                         </form>
                     </div>
