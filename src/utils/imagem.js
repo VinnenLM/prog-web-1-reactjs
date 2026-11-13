@@ -1,11 +1,11 @@
 // Gera uma imagem (SVG em data URI) com emoji/letra e fundo em degradê.
 export function imagemSvg(texto, c1 = "#736ab3", c2 = "#2d294c") {
   const svg =
-    `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>` +
+    `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 200'>` +
     `<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>` +
     `<stop offset='0' stop-color='${c1}'/><stop offset='1' stop-color='${c2}'/>` +
-    `</linearGradient></defs><rect width='200' height='200' fill='url(#g)'/>` +
-    `<text x='100' y='136' font-size='96' text-anchor='middle' fill='white' ` +
+    `</linearGradient></defs><rect width='320' height='200' fill='url(#g)'/>` +
+    `<text x='160' y='136' font-size='96' text-anchor='middle' fill='white' ` +
     `font-family='Arial, sans-serif'>${texto}</text></svg>`;
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }

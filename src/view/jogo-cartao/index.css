@@ -1,205 +1,221 @@
-body,
-html {
-  background-color: #2d294c;
-  color: white;
-}
-
-.tituloJogo {
-  font-size: 1.6rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 8px;
-  color: #2d294c;
-}
-
-.jogoContainer {
-  width: min(520px, 92%);
-  margin: 2.5rem auto;
+.jg-container {
+  width: min(560px, 92%);
+  margin: 2.2rem auto 3rem;
   text-align: center;
 }
 
-.jogoTitulo {
-  font-size: 1.3rem;
+.jg-nome {
+  font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  color: var(--suave);
+  margin-bottom: 12px;
 }
 
-.barra {
-  height: 8px;
-  background: #413d5d;
+.jg-barra {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 999px;
   overflow: hidden;
 }
 
-.barraPreenchida {
+.jg-barra-fill {
   height: 100%;
-  background: #2f9e6b;
-  transition: width 0.3s;
+  background: linear-gradient(90deg, var(--ciano), var(--verde));
+  border-radius: 999px;
+  transition: width 0.35s ease;
 }
 
-.contador {
-  margin: 8px 0 20px;
-  color: #cfcbe8;
+.jg-contador {
+  margin: 10px 0 22px;
+  color: var(--suave);
   font-size: 0.9rem;
 }
 
-.cartao {
-  background-color: white;
-  color: black;
-  border-radius: 12px;
-  padding: 28px 24px;
-  text-align: center;
+.jg-cartao {
+  background: #fff;
+  color: #2d294c;
+  border-radius: 20px;
+  padding: 36px 28px 30px;
+  box-shadow: 0 24px 44px -18px rgba(0, 0, 0, 0.65);
+  border: 3px solid transparent;
+  transition: border-color 0.2s;
 }
 
-.cartaoFrente {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+.jg-cartao.ok {
+  border-color: var(--verde);
+}
+
+.jg-cartao.err {
+  border-color: var(--erro);
+}
+
+.jg-frente {
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 22px;
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.25;
   overflow-wrap: anywhere;
 }
 
-.inputNomes {
+.jg-input {
   width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 12px;
+  padding: 12px;
+  font-size: 1.1rem;
   text-align: center;
+  color: #2d294c;
+  background: #f4f2fc;
+  border: 2px solid #e3e0f2;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  outline: none;
+  transition: border-color 0.15s;
 }
 
-.cartao .btn {
-  background-color: #5e5796;
-  color: white;
-  border-radius: 5px;
-  padding: 8px 22px;
-  font-weight: 600;
+.jg-input:focus {
+  border-color: var(--roxo-claro);
 }
 
-.cartao .btn:hover {
-  background-color: #736ab3;
+.jg-input[readonly] {
+  background: #f9f8fd;
 }
 
-.cartao .btnSecundario {
-  background-color: #8d8aa3;
+.jg-btn {
+  display: inline-block;
+  background: var(--roxo);
+  color: #fff !important;
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 26px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
 }
 
-.acoesJogo {
+.jg-btn:hover {
+  background: var(--roxo-claro);
+  transform: translateY(-1px);
+}
+
+.jg-sec {
+  background: #8d8aa3;
+}
+
+.jg-acoes {
   display: flex;
   gap: 10px;
   justify-content: center;
 }
 
-.certo {
-  color: #1f8f5a;
+.jg-certo,
+.jg-errado {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border-radius: 10px;
   font-weight: 700;
 }
 
-.errado {
-  color: #c0392b;
-  font-weight: 700;
+.jg-certo {
+  color: #1b7a4e;
+  background: #e3f6ec;
 }
 
-.jogoBotao {
-  display: inline-block;
-  margin-top: 12px;
-  background: #5e5796;
-  color: white;
-  padding: 8px 22px;
-  border-radius: 5px;
-  text-decoration: none;
+.jg-errado {
+  color: #b3263e;
+  background: #fde8ec;
 }
 
-.jogoBotao:hover {
-  color: white;
-  text-decoration: none;
+.jg-dica {
+  margin: 10px 0 0;
+  font-size: 0.8rem;
+  color: #8a86a8;
 }
 
 /* ---------- resultado ---------- */
-.containerResultado {
-  margin: 2rem auto;
-  padding: 24px;
-  width: min(600px, 92%);
-  background-color: #ffffff;
+.jg-resultado {
+  width: min(620px, 92%);
+  margin: 2.2rem auto 3rem;
+  padding: 34px 28px;
+  background: #fff;
   color: #2d294c;
-  border-radius: 12px;
+  border-radius: 22px;
   text-align: center;
+  box-shadow: 0 24px 44px -18px rgba(0, 0, 0, 0.65);
 }
 
-.subTituloJogo {
-  color: #736ab3;
+.jg-resultado h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--roxo-claro);
+}
+
+.jg-subtitulo {
+  color: #8a86a8;
+  margin: 4px 0 6px;
+}
+
+.jg-pontos {
+  font-size: 4.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+  background: linear-gradient(135deg, var(--roxo), var(--ciano));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.jg-pct {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.jg-lista,
+.jg-revisao ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  text-align: left;
+}
+
+.jg-lista li {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 14px;
+  border-bottom: 1px solid #ece9f7;
+}
+
+.jg-revisao {
+  text-align: left;
+  background: #f4f2fc;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+}
+
+.jg-revisao h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
   margin-bottom: 8px;
 }
 
-.pontuacao {
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.1;
+.jg-revisao li {
+  padding: 4px 0;
 }
 
-.percentual {
-  font-size: 1.1rem;
-  margin-bottom: 16px;
-}
-
-.porColecao,
-.revisao ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 16px;
-  text-align: left;
-}
-
-.porColecao li {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 12px;
-  border-bottom: 1px solid #e6e3f5;
-}
-
-.revisao {
-  text-align: left;
-  background: #f4f2fc;
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin-bottom: 16px;
-}
-
-.revisao h4 {
-  font-size: 1rem;
-}
-
-.revisao li {
-  padding: 3px 0;
-}
-
-.suaResposta {
+.jg-sua {
   color: #8a86a8;
   font-size: 0.9rem;
 }
 
-.botoesResultado {
+.jg-botoes {
   display: flex;
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-.botaoNovamente {
-  background-color: #5e5796 !important;
-  border-radius: 5px;
-  padding: 8px 22px;
-  color: white;
-  border: 0;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.botaoNovamente:hover {
-  color: white;
-  text-decoration: none;
-}
-
-.botaoNovamente.secundario {
-  background-color: #8d8aa3 !important;
 }

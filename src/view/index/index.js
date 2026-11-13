@@ -1,77 +1,42 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import './index.css';
-import SetaClicar from '../../assets/img/seta-clicar.png';
-import Seta from '../../assets/img/seta.png';
+import "./index.css";
 
 function Index() {
-
-    const [visivel, setVisivel] = useState('naoVisivel');
-    const [naoVisivel, setNaoVisivel] = useState('');
-
-    const mostrar = () => {
-        if (visivel === 'naoVisivel') {
-            setVisivel('');
-            setNaoVisivel('naoVisivel');
-        } else {
-            setVisivel('naoVisivel');
-            setNaoVisivel('');
-        }
-    }
+    const [virado, setVirado] = useState(false);
 
     return (
-        <main>
-            <div className='containerPrincipal'>
-
-                <div>
-                    <h1 className='titulo'>Mind Booster</h1>
-                    <h3 className='subTitulo'>Treine a sua memória com Flash Cards!</h3>
-                    <div className='chamada'>
-                        <Link to="/jogo" className='botaoChamada jogar'>Jogar sem login</Link>
-                        <Link to="/home" className='botaoChamada'>Ver coleções</Link>
-                    </div>
+        <main className="lp">
+            <section className="lp-hero">
+                <h1 className="lp-titulo">Mind Booster</h1>
+                <p className="lp-sub">Treine a sua memória com Flash Cards!</p>
+                <div className="lp-chamada">
+                    <Link to="/jogo" className="lp-btn lp-jogar">Jogar sem login</Link>
+                    <Link to="/home" className="lp-btn">Ver coleções</Link>
                 </div>
+            </section>
 
-                <div className='containerCartoes'>
+            <section className="lp-demo">
+                <p className="lp-pergunta">Como se chama carro em inglês?</p>
+                <button
+                    type="button"
+                    className={`lp-flip ${virado ? "virado" : ""}`}
+                    onClick={() => setVirado(!virado)}
+                    aria-label="Virar cartão"
+                >
+                    <span className="lp-face lp-frente">Carro</span>
+                    <span className="lp-face lp-verso">Car</span>
+                </button>
+                <p className="lp-dica">{virado ? "Clique para voltar" : "Clique no cartão para descobrir"}</p>
+            </section>
 
-                    <p className={`cartaoP ${naoVisivel}`}>Como se chama carro em inglês?</p>
-
-                    <div className='cartoes'>
-
-                        <div id="cartao-clicavel" className='divCartao' onClick={mostrar}>
-                            <div className={`clicar ${naoVisivel}`}>
-                                <span>Clique no cartão <br /> para descobrir</span>
-                                <img src={SetaClicar} alt="" />
-                            </div>
-                            <div className='cartao'>
-                                <div className='cartaoFrente'>
-                                    <span>Carro</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className={`cartaoSeta ${visivel}`}>
-                            <img className='seta' src={Seta} alt="" />
-                        </div>
-
-                        <div className={`divCartao ${visivel}`}>
-                            <div className='cartao'>
-                                <div className='cartaoFrente'>
-                                    <span>Carro</span>
-                                </div>
-                                <div className='separacao'></div>
-                                <div className='cartaoVerso'>
-                                    <span>Car</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
+            <section className="lp-passos">
+                <div className="lp-passo"><i className="bi bi-collection"></i><strong>Crie coleções</strong><span>Monte cartões com frente e verso sobre o que quiser estudar.</span></div>
+                <div className="lp-passo"><i className="bi bi-play-circle"></i><strong>Jogue</strong><span>Responda cartão por cartão, de uma coleção ou de todas de uma vez.</span></div>
+                <div className="lp-passo"><i className="bi bi-trophy"></i><strong>Veja sua pontuação</strong><span>No final, confira os acertos e revise o que errou.</span></div>
+            </section>
         </main>
-    )
+    );
 }
 
 export default Index;

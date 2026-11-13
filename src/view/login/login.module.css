@@ -1,46 +1,28 @@
-body, html {
-    background-color: #2d294c;
-    color: white;
-}
-
 .containerPrincipal {
-    width: 50%;
-    margin: 0 auto;
+  width: min(440px, 92%);
+  margin: 0 auto;
 }
 
 .titulo {
-    text-align: center;
-    margin-top: 5rem;
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 8px;
 }
 
-.titulo>h1 {
-    color: #736ab3;
-    font-weight: bold;
-}
-
-label {
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-#emailInvalido {
-    color: red;
-    font-size: 12px;
-    display: block;
-}
-
-.naoMostrar {
-    display: none !important;
+.titulo > h1 {
+  color: #fff;
+  font-weight: 800;
 }
 
 .botao {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
 }
 
 .btn {
-    background-color: #5e5796 !important;
-    width: 35%;
-    color: white;
+  background: var(--roxo) !important;
+  width: 100%;
+  color: #fff !important;
+  padding: 11px;
 }

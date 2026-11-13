@@ -1,15 +1,47 @@
-.nomeColecao > span {
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-  vertical-align: middle;
+.cartoes {
+  margin-bottom: 8px;
 }
 
 .listGroupItem {
-  padding: 0.2rem 0.6rem !important;
-  border-radius: 0 !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 0.5px solid grey;
+  gap: 12px;
+  background: var(--painel) !important;
+  border: 1px solid var(--borda) !important;
+  border-radius: 12px !important;
+  padding: 10px 16px !important;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.listGroupItem:hover {
+  border-color: var(--roxo-claro) !important;
+  transform: translateX(3px);
+}
+
+.nomeColecao {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.nomeColecao > span:first-child {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.nomeColecao > span + span {
+  color: var(--suave) !important;
+  font-size: 15px;
+}
+
+.botao {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.botao :global(.btn) {
+  padding: 6px 11px;
+  border: 0 !important;
 }

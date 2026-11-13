@@ -143,24 +143,24 @@ const JogoCartao = () => {
   });
 
   if (fase === "carregando") {
-    return <div className="jogoContainer"><p>Carregando...</p></div>;
+    return <div className="jg-container"><p>Carregando...</p></div>;
   }
 
   if (fase === "erro") {
     return (
-      <div className="jogoContainer">
+      <div className="jg-container">
         <p>{erro}</p>
-        <Link className="jogoBotao" to="/home">Voltar</Link>
+        <Link className="jg-btn" to="/home">Voltar</Link>
       </div>
     );
   }
 
   if (fase === "vazio") {
     return (
-      <div className="jogoContainer">
-        <h2 className="tituloJogo">{titulo}</h2>
+      <div className="jg-container">
+        <h2 className="jg-titulo">{titulo}</h2>
         <p>Não há cartões para jogar ainda.</p>
-        <Link className="jogoBotao" to="/home">Voltar às coleções</Link>
+        <Link className="jg-btn" to="/home">Voltar às coleções</Link>
       </div>
     );
   }
@@ -180,16 +180,16 @@ const JogoCartao = () => {
       pct === 100 ? "Perfeito! 🏆" : pct >= 70 ? "Muito bem! 🎉" : pct >= 40 ? "Bom treino! 💪" : "Continue praticando! 📚";
 
     return (
-      <div className="containerResultado">
-        <h2 className="tituloJogo">Pontuação Final</h2>
-        <p className="subTituloJogo">{titulo}</p>
-        <div className="pontuacao">
+      <div className="jg-resultado">
+        <h2 className="jg-titulo">Pontuação Final</h2>
+        <p className="jg-subtitulo">{titulo}</p>
+        <div className="jg-pontos">
           {acertos} / {total}
         </div>
-        <p className="percentual">{pct}% de acertos — {mensagem}</p>
+        <p className="jg-pct">{pct}% de acertos — {mensagem}</p>
 
         {Object.keys(porColecao).length > 1 && (
-          <ul className="porColecao">
+          <ul className="jg-lista">
             {Object.entries(porColecao).map(([nome, g]) => (
               <li key={nome}>
                 <span>{nome}</span>
@@ -200,24 +200,24 @@ const JogoCartao = () => {
         )}
 
         {erros.length > 0 && (
-          <div className="revisao">
+          <div className="jg-revisao">
             <h4>Para revisar</h4>
             <ul>
               {erros.map((h) => (
                 <li key={h.cartao.id}>
                   <strong>{h.cartao.frente}</strong> → {h.cartao.verso}
-                  {h.dada && <span className="suaResposta"> (você: {h.dada})</span>}
+                  {h.dada && <span className="jg-sua"> (você: {h.dada})</span>}
                 </li>
               ))}
             </ul>
           </div>
         )}
 
-        <div className="botoesResultado">
-          <button className="botaoNovamente" onClick={() => iniciar(baralho)}>
+        <div className="jg-botoes">
+          <button className="jg-btn" onClick={() => iniciar(baralho)}>
             Jogar Novamente
           </button>
-          <Link className="botaoNovamente secundario" to={idColecao ? `/cartao/${idColecao}` : "/home"}>
+          <Link className="jg-btn jg-sec" to={idColecao ? `/cartao/${idColecao}` : "/home"}>
             Voltar às coleções
           </Link>
         </div>
@@ -226,21 +226,21 @@ const JogoCartao = () => {
   }
 
   return (
-    <div className="jogoContainer">
-      <p className="jogoTitulo">{titulo}</p>
-      <div className="barra">
-        <div className="barraPreenchida" style={{ width: `${(indice / baralho.length) * 100}%` }} />
+    <div className="jg-container">
+      <p className="jg-nome">{titulo}</p>
+      <div className="jg-barra">
+        <div className="jg-barra-fill" style={{ width: `${(indice / baralho.length) * 100}%` }} />
       </div>
-      <p className="contador">
+      <p className="jg-contador">
         Cartão {indice + 1} de {baralho.length}
         {!idColecao && <span> · {cartao.colecao}</span>}
       </p>
 
-      <div className="cartao jogo">
-        <h3 className="cartaoFrente">{cartao.frente}</h3>
+      <div className={`jg-cartao ${feedback ? (feedback.correto ? "ok" : "err") : ""}`}>
+        <h3 className="jg-frente">{cartao.frente}</h3>
         <input
           ref={entrada}
-          className="inputNomes"
+          className="jg-input"
           type="text"
           value={resposta}
           readOnly={!!feedback}
@@ -251,17 +251,18 @@ const JogoCartao = () => {
 
         {feedback ? (
           <>
-            <p className={feedback.correto ? "certo" : "errado"}>
+            <p className={feedback.correto ? "jg-certo" : "jg-errado"}>
               {feedback.correto ? "Correto! ✅" : `Resposta: ${feedback.esperado}`}
             </p>
-            <button className="btn" onClick={proximo}>
+            <button className="jg-btn" onClick={proximo}>
               {indice < baralho.length - 1 ? "Próximo" : "Ver pontuação"}
             </button>
+            <p className="jg-dica">ou pressione Enter</p>
           </>
         ) : (
-          <div className="acoesJogo">
-            <button className="btn" onClick={verificar}>Verificar</button>
-            <button className="btn btnSecundario" onClick={naoSei}>Não sei</button>
+          <div className="jg-acoes">
+            <button className="jg-btn" onClick={verificar}>Verificar</button>
+            <button className="jg-btn jg-sec" onClick={naoSei}>Não sei</button>
           </div>
         )}
       </div>

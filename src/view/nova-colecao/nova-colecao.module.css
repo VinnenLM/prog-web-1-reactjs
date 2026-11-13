@@ -1,72 +1,43 @@
-body, html {
-    background-color: #2d294c;
-    color: white;
+.containerPrincipal {
+  width: min(520px, 92%);
+  margin: 2.2rem auto 60px;
 }
 
-.minhas-colecoes {
-    margin-right: 20px;  
-}
-
-.titulo-pagina {
-    margin: 3rem 0 0 35px;
-}
-
-.containerPrincipal{
-    margin-top: 2rem;
-    margin-left: 30px;
-    margin-right: 30px;
-}
-
-.containerPrincipal > span{
-    font-weight: bold;
-    font-size: 25px;
+.containerPrincipal > span {
+  display: block;
+  font-weight: 800;
+  font-size: 1.8rem;
 }
 
 .titulo {
-    text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 40px;
+  margin: 6px 0 18px;
 }
 
 .titulo > h3 {
-    font-size: 1.5rem;
-    font-weight: 400;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--suave);
 }
 
-.containerInput{
-    margin: 0 auto !important;
-    width: 30%;
-}
-
-label {
-    margin-bottom: 0;
-}
-
-input {
-    border-radius: 5px;
-}
-
-.btn-primary {
-    border-color: none !important;
+.containerInput {
+  width: 100%;
+  background: var(--painel);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 8px 24px 26px;
+  box-shadow: var(--sombra);
 }
 
 .botao {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 
-#btn-envio > .btn{
-    border: 1px solid grey;
-}
-
+.btn,
 #salvar {
-    background-color: #5e5796 !important;
-    width: 45%;
-    color: white;
-}
-
-#txt-descricao{
-    height: 7em;
-    resize: none;
+  background: var(--roxo) !important;
+  color: #fff !important;
+  width: 100%;
+  margin-top: 28px !important;
+  padding: 11px;
 }

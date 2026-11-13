@@ -1,44 +1,80 @@
 .header {
-  background-color: #413d5d;
-  vertical-align: middle;
-  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(65, 61, 93, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--borda);
+  padding: 12px 0;
 }
 
 .header__menu {
   display: flex;
   justify-content: space-between;
-  margin: 0 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: min(1100px, 92%);
+  margin: 0 auto;
 }
 
-.logo > a > span {
-  font-weight: bold;
+.logo a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo span {
+  font-weight: 800;
   font-size: 20px;
-  margin-left: 5px;
-  vertical-align: middle;
-  color: white;
+  color: #fff;
+  letter-spacing: -0.02em;
 }
 
 .imgLogo {
-  width: 25px;
+  width: 28px;
 }
 
-.opcoes > a {
-  line-height: 2rem;
-  color: white;
+.opcoes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
 }
 
-.entrar {
-  margin-left: 20px;
+.opcoes a {
+  color: #fff;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
 }
 
-.sair {
-  margin-left: 20px;
+.opcoes a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
 
 .minhasColecoes {
-  margin-right: 20px;
+  margin: 0;
 }
 
-.logo > a {
-  text-decoration: none;
+.entrar {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  margin-left: 8px;
+}
+
+.cadastro {
+  background: var(--roxo);
+  font-weight: 600 !important;
+}
+
+.cadastro:hover {
+  background: var(--roxo-claro) !important;
+}
+
+.sair {
+  margin-left: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
